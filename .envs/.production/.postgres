@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=biuropodrozy
+POSTGRES_USER=XylWrcWroOMJQqoeLcNFDOkxPVTuWKgH
+POSTGRES_PASSWORD=mQG4EkCXhL9pWdbA7vUzj4MmQFHFceYDYdQhxJdpCCanyLesVGOan56O89p22LFj
