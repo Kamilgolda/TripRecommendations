@@ -48,43 +48,50 @@
 
   <body>
 
-    <div class="mb-1">
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="{% url 'home' %}">BiuroPodrozy</a>
+       <header class="main-header">
+        <div class="logo">
+            <a href="{% url 'home' %}"><img src="{% static 'images/logo.png'%}"></a>
+        </div>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+        <input type="checkbox" class="menu-btn" id="menu-btn">
+        <label for="menu-btn" class="menu-icon">
+            <span class="menu-icon__line"></span>
+        </label>
+
+        <ul class="nav-links">
+            <li class="nav-link">
+                <a href="{% url 'about' %}">O nas</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'about' %}">About</a>
+            <li class="nav-link">
+                <a href="#">Wycieczki</a>
             </li>
-            {% if request.user.is_authenticated %}
-              <li class="nav-item">
+
+            <li class="nav-link">
+                <a href="#">Contact</a>
+            </li>
+
+              {% if request.user.is_authenticated %}
+                <li class="nav-link">
+
+                  <a href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
+                </li>
+
+            <li class="nav-link">
                 {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
-              </li>
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
-              </li>
+                <a href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
+            </li>
             {% else %}
-              <li class="nav-item">
+            <li class="nav-link">
                 {# URL provided by django-allauth/account/urls.py #}
-                <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+                <a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-link">
                 {# URL provided by django-allauth/account/urls.py #}
-                <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
+                <a href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
               </li>
             {% endif %}
-          </ul>
-        </div>
-      </nav>
+        </ul>
+    </header>
 
     </div><!--Nawigacja-->
 
@@ -174,6 +181,7 @@
         </footer>
     </div> <!--Stopka-->
 
+       <script src="{% static 'js/project.js'%}"></script>
     {% block modal %}{% endblock modal %}
 
     {% block inline_javascript %}
