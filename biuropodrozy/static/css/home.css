@@ -42,51 +42,53 @@
   transform: translateX(-50%);
 }
 
+/*Środkowy Panel*/
 .hero {
-  height: 100vh;
-  background-size: cover;
+  width:100%;
+  height:100%;
   display: flex;
   justify-content: center;
-  flex-flow: row wrap;
-  padding: 0 10vw;
+  flex-flow: column wrap;
+  align-items: center;
+  /*padding: 0 5vw;*/
   padding-top: 60px;
+  position: relative;
   color: #fff;
-  width:100%;
 }
 
-.hero .cloudsdown {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+.hero .clouds-up {
   opacity:.7;
+  transform:rotateX(180deg);
 }
 
-.hero .cloudsdown img {
-  position: absolute;
-  bottom: 0;
-  max-width: 100%;
+.hero .clouds-up img {
   animation: animate calc(15s * var(--i)) linear infinite;
 }
 
-.hero .cloudsup {
+.hero .clouds {
   position: absolute;
   top:0;
   left: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  transform:rotateX(180deg);
   opacity:.5;
 }
 
-.hero .cloudsup img {
+.hero .clouds img {
   position: absolute;
   bottom: 0;
   max-width: 100%;
   animation: animate calc(20s * var(--i)) linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 .hero h1 {
@@ -118,3 +120,4 @@
   right: 0;
   border-top: 6px solid #000;
 }
+/* ENDsrodkowyPanel*/

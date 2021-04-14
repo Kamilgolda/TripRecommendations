@@ -1,4 +1,4 @@
-*, *:before, *:after {
+*{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -12,6 +12,12 @@ body {
     background-attachment: fixed;
     background-origin: content-box;
     background-size: cover;
+    height: 100%;
+}
+
+.content{
+width:100%;
+position:relative;
 }
 
 /*NAV*/
@@ -117,15 +123,6 @@ body {
 }
 .logo img{
     max-width: 65px;
-}
-
-@keyframes animate {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
 }
 
 @media screen and (min-width: 600px) {
@@ -321,6 +318,9 @@ body {
     display: grid;
     font-size: 14px;
     width:100%;
+    /*position: absolute;*/
+    bottom: 0;
+    /*height: 0px;*/
 }
 
 footer {

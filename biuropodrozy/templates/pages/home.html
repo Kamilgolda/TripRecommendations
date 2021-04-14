@@ -8,25 +8,26 @@
 {% block content %}
   <div class="hero">
     <h1>IT flies - serfuj nie tylko po internecie</h1>
-    <!--<div class="cloudsup" >
+    <div class="clouds clouds-up" >
           <img src="{% static 'images/clouds/cloud1.png'%}" style="--i:1;">
           <img src="{% static 'images/clouds/cloud2.png'%}" style="--i:2;">
           <img src="{% static 'images/clouds/cloud3.png'%}" style="--i:3;">
           <img src="{% static 'images/clouds/cloud4.png'%}" style="--i:4;">
           <img src="{% static 'images/clouds/cloud5.png'%}" style="--i:5;">
-      </div>
-      <div class="cloudsdown" >
-          <img src="{% static 'images/clouds/cloud1.png'%}" style="--i:1;">
-          <img src="{% static 'images/clouds/cloud2.png'%}" style="--i:2;">
-          <img src="{% static 'images/clouds/cloud3.png'%}" style="--i:3;">
-          <img src="{% static 'images/clouds/cloud4.png'%}" style="--i:4;">
-          <img src="{% static 'images/clouds/cloud5.png'%}" style="--i:5;">
-      </div>-->
-      <div class="container">
+    </div>
+    <div class="container">
         {% include "partials/card.html" with image="images/cards/chat.png" text="Najczęściej zadawane pytania (FAQ)" href="#" %}
         {% include "partials/card.html" with image="images/cards/cash.png" text="Aktualne kursy walut" href="waluty" %}
         {% include "partials/card.html" with image="images/cards/plane.png" text="Bezpieczeństwo na lotnisku i w samolocie" href="#" %}
         {% include "partials/card.html" with image="images/cards/bus.png" text="Na wycieczce objazdowej" href="#" %}
       </div>
+      <div class="clouds" >
+          <img src="{% static 'images/clouds/cloud1.png'%}" style="--i:1;">
+          <img src="{% static 'images/clouds/cloud2.png'%}" style="--i:2;">
+          <img src="{% static 'images/clouds/cloud3.png'%}" style="--i:3;">
+          <img src="{% static 'images/clouds/cloud4.png'%}" style="--i:4;">
+          <img src="{% static 'images/clouds/cloud5.png'%}" style="--i:5;">
+      </div>
+
   </div>
 {% endblock %}
