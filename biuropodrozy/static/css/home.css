@@ -42,6 +42,11 @@
   transform: translateX(-50%);
 }
 
+/*Środkowy Panel*/
+.content{
+padding-top:0;
+}
+
 .hero {
   height: 100vh;
   background-size: cover;
@@ -80,6 +85,7 @@
   overflow: hidden;
   transform:rotateX(180deg);
   opacity:.5;
+  z-index:-1;
 }
 
 .hero .cloudsup img {

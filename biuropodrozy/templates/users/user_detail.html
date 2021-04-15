@@ -1,17 +1,20 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "account/base.html" %}
+{% load static i18n %}
 
 {% block title %}User: {{ object.username }}{% endblock %}
 
-{% block content %}
+{% block inner %}
 <div class="container">
+  <h1>{% trans "Mój Profil" %}</h1>
 
   <div class="row">
     <div class="col-sm-12">
 
-      <h2>{{ object.username }}</h2>
-      {% if object.name %}
-        <p>{{ object.name }}</p>
+      <h2>{% trans "Nazwa użytkownika" %}: {{ object.username }}</h2>
+      {% if object.emailaddress_set.all %}
+        {% for emailaddress in user.emailaddress_set.all %}
+        <p>{% trans "Email address" %}: {{ emailaddress.email }}</p>
+        {% endfor %}
       {% endif %}
     </div>
   </div>
@@ -21,8 +24,11 @@
 <div class="row">
 
   <div class="col-sm-12">
-    <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">My Info</a>
-    <a class="btn btn-primary" href="{% url 'account_email' %}" role="button">E-Mail</a>
+    <!--<a class="btn btn-primary" href="{% url 'users:update' %}" role="button">My Info</a>-->
+    <a class="btn btn-info" href="#" role="button">Moje rezerwacje</a>
+    <a class="btn btn-primary" href="{% url 'account_email' %}" role="button">Dodaj/Usuń E-Mail</a>
+    <a class="btn btn-primary" href="{% url 'account_reset_password' %}" role="button">Zmień hasło</a>
+    <a class="btn btn-danger" href="{% url 'users:delete' %}" role="button">Usuń konto</a>
     <!-- Your Stuff: Custom user template urls -->
   </div>
 
@@ -32,5 +38,5 @@
 
 
 </div>
-{% endblock content %}
+{% endblock inner %}
 
