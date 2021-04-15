@@ -32,8 +32,6 @@
 
     {% block css %}{% endblock %}
 
-    {% block javascript %}
-
       <!-- Bootstrap JS and its dependencies-->
       <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -41,13 +39,11 @@
 
       <script defer src="{% static 'js/project.js' %}"></script>
 
-
-    {% endblock javascript %}
+    {% block javascript %}{% endblock %}
 
   </head>
 
   <body>
-
        <header class="main-header">
         <div class="logo">
             <a href="{% url 'home' %}"><img src="{% static 'images/logo.png'%}"></a>
@@ -67,13 +63,13 @@
             </li>
 
             <li class="nav-link">
-                <a href="#">Contact</a>
+                <a href="#">Kontakt</a>
             </li>
 
               {% if request.user.is_authenticated %}
                 <li class="nav-link">
 
-                  <a href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
+                  <a href="{% url 'users:detail' request.user.username  %}">{% trans "Mój Profil" %}</a>
                 </li>
 
             <li class="nav-link">
@@ -95,13 +91,15 @@
 
     </div><!--Nawigacja-->
 
-    <div class="content">
-
-      {% if messages %}
+       {% if messages %}
           {% for message in messages %}
               <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
           {% endfor %}
       {% endif %}
+
+    <div class="content">
+
+
 
       {% block content %}{% endblock content %}
 
@@ -181,7 +179,6 @@
         </footer>
     </div> <!--Stopka-->
 
-       <script src="{% static 'js/project.js'%}"></script>
     {% block modal %}{% endblock modal %}
 
     {% block inline_javascript %}

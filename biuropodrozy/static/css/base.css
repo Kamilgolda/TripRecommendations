@@ -18,6 +18,13 @@ body {
 .content{
 width:100%;
 position:relative;
+padding-top:65px;
+}
+
+.alert{
+margin-top: 65px;
+position:absolute;
+z-index:1;
 }
 
 /*NAV*/
