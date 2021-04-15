@@ -63,11 +63,11 @@
                 <a href="{% url 'about' %}">O nas</a>
             </li>
             <li class="nav-link">
-                <a href="#">Wycieczki</a>
+                <a href="{% url 'trips' %}">Wycieczki</a>
             </li>
 
             <li class="nav-link">
-                <a href="#">Contact</a>
+               <a href="{% url 'contact' %}">Contact</a>
             </li>
 
               {% if request.user.is_authenticated %}
