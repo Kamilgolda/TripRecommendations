@@ -1,4 +1,4 @@
-*, *:before, *:after {
+*{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -130,15 +130,6 @@ z-index:1;
 }
 .logo img{
     max-width: 65px;
-}
-
-@keyframes animate {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
 }
 
 @media screen and (min-width: 600px) {
@@ -334,6 +325,9 @@ z-index:1;
     display: grid;
     font-size: 14px;
     width:100%;
+    /*position: absolute;*/
+    bottom: 0;
+    /*height: 0px;*/
 }
 
 footer {
