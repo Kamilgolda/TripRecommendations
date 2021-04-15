@@ -1,0 +1,120 @@
+.contOferty{
+    padding-bottom: 200px;
+    width: 100%;
+}
+#oferty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 115px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    background-color: rgba(255, 255, 255,0.5);
+    border-radius: 60px;
+    position: relative;
+    top: 100px;
+
+}
+.boxWycieczki{
+    position: relative;
+    height: 450px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    background:#060c21 ;
+    transition: 0.5s;
+    top: 65px;
+    border-radius: 15px;
+    cursor: pointer;
+
+    box-shadow: 15px 15px 20px #888888;
+}
+.boxWycieczki:hover{
+    height: 510px;
+
+}
+.boxWycieczki .imgBx{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+
+}
+.boxWycieczki .imgBx img{
+    max-width: 100%;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.boxWycieczki:hover .imgBx img{
+    opacity: 0.4;
+}
+.boxWycieczki .content{
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 14px;
+    height: 200px;
+    background: rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    opacity: 1;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.boxWycieczki:hover .content{
+    opacity: 0.6;
+    transition: 0.5s;
+}
+
+.boxWycieczki .content h2{
+    font-size: 1.2rem;
+    color: rgb(185, 136, 1);
+    text-align: center;
+    margin: auto;
+    font-weight: 500;
+
+    letter-spacing: 1px;
+}
+.boxWycieczki .content h2 span{
+    font-size: 0.7rem;
+    color: #FFF;
+    font-weight: 200;
+
+    letter-spacing: 2px;
+}
+/*linki szczegoly */
+.boxWycieczki .szczegoly{
+    text-decoration: none;
+    position: relative;
+    transition: 0.5s;
+    color: rgb(238, 215, 8);
+    font-size: 0.8rem;
+    top: 10px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    opacity: 0;
+}
+.boxWycieczki .szczegoly::before{
+    content:'' ;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: #FFF;
+    filter: blur(30px);
+}
+
+.boxWycieczki:hover .szczegoly{
+    opacity: 1;
+    transition: 1s;
+}
+
