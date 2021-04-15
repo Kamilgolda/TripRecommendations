@@ -4,6 +4,10 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, RedirectView, UpdateView
+from django.views.generic import TemplateView
+from django.shortcuts import render
+from django.contrib import messages
+
 
 User = get_user_model()
 
@@ -32,6 +36,30 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
 
 user_update_view = UserUpdateView.as_view()
+
+
+class UserDeleteView(TemplateView):
+    template_name = 'users/user_delete.html'
+
+
+user_delete_view = UserDeleteView.as_view()
+
+
+def del_user(request):
+    try:
+        u = request.user
+        u.delete()
+        messages.success(request, 'Konto zostało usunięte')
+
+    except User.DoesNotExist:
+        messages.error(request, 'Użytkownik nie istnieje')
+        return render(request, 'pages/home.html')
+
+    except Exception:
+        messages.error(request, 'Wystąpił błąd')
+        return render(request, 'pages/home.html')
+
+    return render(request, 'pages/home.html')
 
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):

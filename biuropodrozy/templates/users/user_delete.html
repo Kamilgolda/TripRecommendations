@@ -1,0 +1,21 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Delete account" %}{% endblock %}
+
+{% block inner %}
+<h1>{% trans "Usuń konto" %}</h1>
+
+<p>{% trans 'Czy na pewno chcesz usunąć konto?' %}</p>
+
+<form method="post" action="{% url 'users:deleteconfirm' %}">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <button class="btn btn-danger" type="submit">{% trans 'Usuń konto' %}</button>
+</form>
+
+
+{% endblock %}
