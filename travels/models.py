@@ -5,6 +5,7 @@ from django.urls import reverse
 from biuropodrozy.outer_api.weather_api import get_weather
 from biuropodrozy.outer_api.exchange_rates_api import get_rate_in_pln
 from biuropodrozy.outer_api.covid_api import get_covid
+from django.core.validators import MinValueValidator, MaxValueValidator
 from datetime import date
 
 
@@ -114,4 +115,20 @@ class TripDates(models.Model):
         days = duration.days
         if not self.trip.duration == days:
             raise Exception("Can't create new TripDates object - duration is incorrect")
+        super().save(*args, **kwargs)
+
+
+class TripReservation(models.Model):
+    """Reservation model class"""
+
+    user = models.IntegerField(verbose_name="User ID")
+    trip = models.ForeignKey('Trip', on_delete=models.CASCADE)
+    persons = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], verbose_name="Ilość osób")
+    phone = models.CharField(max_length=12, verbose_name="Numer kontaktowy")
+    guide = models.BooleanField(default=0, verbose_name="Prywatny przewodnik")
+    room = models.BooleanField(default=0, verbose_name="Pokój premium")
+    price = models.DecimalField(blank=True, max_digits=8, decimal_places=2, verbose_name="Cena wycieczki")
+
+    def save(self, *args, **kwargs):
+        self.price = self.persons * self.trip.price
         super().save(*args, **kwargs)
