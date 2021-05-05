@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/trip_details.css'%}">
+{% endblock css %}
+
+{% block content %}
+
+<div class="detailscontainer">
+  <div class="details">
+    <div class="leftside">
+      <h1 class="title">{{ trip.title }}</h1>
+      <div class="imgdet">
+        {% for picture in pictures %}
+        {% if picture.trip == trip %}
+        <img src="{{ picture.picture_url }}">
+        {% endif %}
+        {% endfor %}
+      </div>
+      <h2>Kraj: {{ trip.country }}</h2>
+      <h2>Ocena: {{ trip.stars }}/6</h2>
+      <h2>Czas trwania: {{ trip.duration }} dni</h2>
+                </br>
+      <p>{{ trip.description1 }}</p>
+      <p>{{ trip.description2 }}</p>
+      <p>{{ trip.description3 }}</p>
+      <p>{{ trip.description4 }}</p>
+      <h2> Cena od {{ trip.price }} zł/os </h2>
+    </div>
+    <div class="rightside">
+      <div class="weather">
+        <h2>Pogoda:</h2>
+        <h2>Dziś: {{trip.weather_api.temp_today}} {{trip.weather_api.desc_today}}</h2>
+        <h2>{{trip.weather_api.next1day_name}}: {{trip.weather_api.temp_next1day}}</h2>
+        <h2>{{trip.weather_api.next2day_name}}: {{trip.weather_api.temp_next2day}}</h2>
+        <h2>{{trip.weather_api.next3day_name}}: {{trip.weather_api.temp_next3day}}</h2>
+      </div>
+      {% if trip.currency != 'PLN' %}
+      <div class="exchanges">
+        <h2>Kurs: 1{{trip.currency}} = {{ trip.exchange_rates_api.rate_in_pln }}zł</h2>
+      </div>
+      {% endif %}
+      <div class="covid">
+      <h2>Aktualna liczba zachorowań na covid: {{trip.covid_api.today_covid}}</h2>
+      </div>
+      {% if user.is_authenticated %}
+      <div id="reservation">
+        <!-- render_partial 'travels.views.reservation' arg1=object arg2=user -->
+        <h1>Tu będzie rezerwacja</h1>
+      </div>
+        {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock content %}

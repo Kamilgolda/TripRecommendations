@@ -12,7 +12,7 @@ urlpatterns = [
     path(
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
-    path('oferty/', TemplateView.as_view(template_name="pages/trips.html"), name='trips'),
+    path('oferty/', include("travels.urls", namespace="travels")),
     path('kontakt/', TemplateView.as_view(template_name="pages/contact.html"), name='contact'),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),

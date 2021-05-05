@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/trips.css'%}">
+{% endblock css %}
+
+{% block content %}
+
+<div class="contOferty">
+    <div id="oferty">
+        {% for trip in trips %}
+        <div class="boxWycieczki">
+            <div class="imgBx">
+              {% for picture in pictures %}
+                {% if picture.trip == trip %}
+               <img src="{{picture.picture_url}}">
+                {% endif %}
+              {% endfor %}
+            </div>
+
+            <a href="{% url 'travels:details' slug=trip.slug %}" class="szczegoly">Sprawdź szczegóły oferty</a>
+
+            <div class="content">
+                <h2>{{trip.title}}<br>
+                    <span>
+                        Ocena: 5/5
+                        <br>
+                        Czas trwania: {{trip.duration}} dni
+                        <br>
+                        Cena od {{trip.price}} zł/os.
+                </span>
+                </h2>
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+</div>
+{% endblock content %}
