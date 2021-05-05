@@ -6,16 +6,12 @@ from biuropodrozy.outer_api.weather_api import get_weather
 from biuropodrozy.outer_api.exchange_rates_api import get_rate_in_pln
 from biuropodrozy.outer_api.covid_api import get_covid
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.conf import settings
 from datetime import date
 
 
 class Trip(models.Model):
     """Trip model class"""
-
-    class Temperatures(models.TextChoices):
-        NISKA = 'Niska', _('Niska')
-        SREDNIA = 'Średnia', _('Średnia')
-        WYSOKA = 'Wysoka', _('Wysoka')
 
     class Climates(models.TextChoices):
         GORSKI = 'Górski', _('Górski')
@@ -53,15 +49,15 @@ class Trip(models.Model):
     description3 = models.CharField(max_length=1000, blank=True, verbose_name=_("Opis3 wycieczki"))
     description4 = models.CharField(max_length=1000, blank=True, verbose_name=_("Opis4 wycieczki"))
     country = models.CharField(max_length=50, verbose_name=_("Kraj wycieczki"))
+    countryEN = models.CharField(max_length=50, verbose_name=_("Kraj wycieczki po angielsku"))
     currency = models.CharField(max_length=5, verbose_name=_("Skrót waluty"))
     timezone = models.CharField(max_length=7, verbose_name=_("Strefa czasowa"))
     stars = models.IntegerField(choices=STARS, blank=True, verbose_name="Gwiazdki hotelu wycieczki")
-    temperature = models.CharField(max_length=15, choices=Temperatures.choices, verbose_name="Temperatura")
     climate = models.CharField(max_length=20, choices=Climates.choices, verbose_name="Klimat")
     landscape = models.CharField(max_length=15, choices=Landscapes.choices, verbose_name="Krajobraz")
     type = models.CharField(max_length=20, choices=Types.choices, verbose_name="Rodzaj wycieczki")
     transport = models.CharField(max_length=20, choices=Transports.choices, verbose_name="Rodzaj transportu")
-    price = models.DecimalField(max_digits=6, decimal_places=2, verbose_name="Cena wycieczki")
+    price = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(100000)], verbose_name="Cena wycieczki")
     duration = models.IntegerField(verbose_name="Ilość dni wycieczki")
     slug = models.SlugField(max_length=256, unique=True, blank=True)
 
@@ -94,7 +90,7 @@ class Trip(models.Model):
 
     @property
     def covid_api(self):
-        covid = get_covid(self.country)
+        covid = get_covid(self.countryEN)
         return covid
 
 
@@ -102,6 +98,10 @@ class TripPicture(models.Model):
     """TripPictures model class"""
     trip = models.ForeignKey('Trip', on_delete=models.CASCADE)
     picture = models.ImageField()
+
+    @property
+    def picture_url(self):
+        return self.picture.url if bool(self.picture) else None
 
 
 class TripDates(models.Model):
@@ -121,8 +121,8 @@ class TripDates(models.Model):
 class TripReservation(models.Model):
     """Reservation model class"""
 
-    user = models.IntegerField(verbose_name="User ID")
-    trip = models.ForeignKey('Trip', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    trip = models.ForeignKey('Trip', on_delete=models.PROTECT)
     persons = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], verbose_name="Ilość osób")
     phone = models.CharField(max_length=12, verbose_name="Numer kontaktowy")
     guide = models.BooleanField(default=0, verbose_name="Prywatny przewodnik")
