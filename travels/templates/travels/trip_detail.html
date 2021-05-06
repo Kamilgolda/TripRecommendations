@@ -18,14 +18,58 @@
         {% endif %}
         {% endfor %}
       </div>
-      <h2>Kraj: {{ trip.country }}</h2>
-      <h2>Ocena: {{ trip.stars }}/6</h2>
+      <h2>{{ trip.city }}</h2>
+      <h2>Ocena: {{ trip.rating }}/6</h2>
+      <h2>Gwiazdki hotelu: {{trip.hotelstars}}</h2>
       <h2>Czas trwania: {{ trip.duration }} dni</h2>
-                </br>
-      <p>{{ trip.description1 }}</p>
-      <p>{{ trip.description2 }}</p>
-      <p>{{ trip.description3 }}</p>
-      <p>{{ trip.description4 }}</p>
+      <div class="descriptions">
+        <h6>{{ trip.head_description|linebreaks }}</h6>
+
+        {% if trip.location_description != "" %}
+        <h5>POŁOŻENIE</h5>
+        <h6>{{ trip.location_description|linebreaks }}</h6>
+        {% endif %}
+
+        {% if trip.beach_description != "" %}
+        <h5>PLAŻA</h5>
+        <h6>{{ trip.beach_description|linebreaks }}</h6>
+        {% endif %}
+
+        {% if trip.hotel_description != "" %}
+        <h5>HOTEL</h5>
+        <h6>{{ trip.hotel_description|linebreaks }}</h6>
+        {% endif %}
+
+        {% if trip.room_description != "" %}
+        <h5>POKÓJ</h5>
+        <h6>{{ trip.room_description|linebreaks }}</h6>
+        {% endif %}
+
+        {% if trip.sport_and_entertainment_description != "" %}
+        <h5>SPORT I ROZRYWKA</h5>
+        <h6>{{ trip.sport_and_entertainment_description|linebreaks }}</h6>
+        {% endif %}
+
+        {% if trip.all_inclusive_description != "" %}
+        <h5>ALL INCLUSIVE (ZA DOPŁATĄ)</h5>
+        <h6>{{ trip.all_inclusive_description|linebreaks }}</h6>
+        {% endif %}
+
+        {% if trip.for_free_description != "" %}
+        <h5>GRATIS</h5>
+        <h6>{{ trip.for_free_description|linebreaks }}</h6>
+        {% endif %}
+
+        {% if trip.trip_plan_description != "" %}
+        <h5>PLAN WYCIECZKI</h5>
+        <h6>{{ trip.trip_plan_description|linebreaks }}</h6>
+        {% endif %}
+
+        {% if trip.benefits_description != "" %}
+        <h5>ŚWIADCZENIA</h5>
+        <h6>{{ trip.benefits_description|linebreaks }}</h6>
+        {% endif %}
+        </div>
       <h2> Cena od {{ trip.price }} zł/os </h2>
     </div>
     <div class="rightside">
@@ -37,9 +81,11 @@
         <h2>{{trip.weather_api.next3day_name}}: {{trip.weather_api.temp_next3day}}</h2>
       </div>
       {% if trip.currency != 'PLN' %}
+      {% if trip.exchange_rates_api.rate_in_pln != '' %}
       <div class="exchanges">
         <h2>Kurs: 1{{trip.currency}} = {{ trip.exchange_rates_api.rate_in_pln }}zł</h2>
       </div>
+      {% endif %}
       {% endif %}
       <div class="covid">
       <h2>Aktualna liczba zachorowań na covid: {{trip.covid_api.today_covid}}</h2>

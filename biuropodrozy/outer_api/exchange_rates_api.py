@@ -3,11 +3,14 @@ import requests
 
 def get_rate_in_pln(currency):
     """Fetch rate in PLN from currency exchanges api"""
-
     response = requests.get(f"https://api.frankfurter.app/latest?from={currency}&to=PLN")
-    rate = response.json()
-    rate = rate['rates']['PLN']
+    if response.ok:
+        rate = response.json()
+        rate = rate['rates']['PLN']
+    else:
+        rate = ""
     return {'rate_in_pln': rate}
+
 
 def get_all_rates():
     """Fetch rates in PLN from currency exchanges api"""
