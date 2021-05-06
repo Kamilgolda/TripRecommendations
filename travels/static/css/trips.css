@@ -118,3 +118,12 @@
     transition: 1s;
 }
 
+.pagination{
+width:100vw;
+margin-top:5vh;
+}
+
+.pagination .step-links{
+margin:auto;
+}
+
