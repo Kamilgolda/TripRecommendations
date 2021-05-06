@@ -71,7 +71,7 @@
         <h6>{{ trip.benefits_description|linebreaks }}</h6>
         {% endif %}
         </div>
-      <h2> Cena od {{ trip.price }} zł/os </h2>
+      <h2> Cena od <span id="tripPrice">{{ trip.price }} </span> zł/os </h2>
     </div>
     <div class="rightside">
       <div class="weather">
@@ -93,7 +93,6 @@
       </div>
       {% if user.is_authenticated %}
       <div id="reservation">
-        aaa
         {% render_partial 'travels.views.reservation' arg1=object arg2=user %}
       </div>
         {% endif %}
