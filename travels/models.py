@@ -139,4 +139,8 @@ class TripReservation(models.Model):
 
     def save(self, *args, **kwargs):
         self.price = self.persons * self.trip.price
+        if self.room != 0:
+            self.price = self.price + 400
+        if self.guide != 0:
+            self.price = self.price + 300
         super().save(*args, **kwargs)

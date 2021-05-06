@@ -1,3 +1,7 @@
+from django.contrib.auth.decorators import login_required
+from .forms import TripReservationForms
+from django.contrib import messages
+from django.shortcuts import render, redirect
 from django.shortcuts import render
 from .models import TripReservation, Trip, TripPicture
 from django.views.generic.edit import CreateView
@@ -31,3 +35,25 @@ class TripDetailView(DetailView):
 class TripReservationCreateView(CreateView):
     model = TripReservation
     form_class = TripReservationForms
+
+
+@login_required
+def reservation(request, *args, **kwargs):
+
+    if request.method == 'POST':
+        r_form = TripReservationForms(request.POST)
+        if r_form.is_valid():
+            r_form.save()
+            messages.success(request, f'Rezerwacja została złożona')
+            path = "/oferty"
+            return redirect(path)
+
+    else:
+        r_form = TripReservationForms()
+
+
+    context = {
+        'form': r_form,
+        'kwargs': kwargs,
+    }
+    return render(request, 'travels/partials/reservation_form.html', context)

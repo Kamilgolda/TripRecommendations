@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load render_partial %}
 {% load static i18n %}
 
 {% block css %}
@@ -92,11 +93,16 @@
       </div>
       {% if user.is_authenticated %}
       <div id="reservation">
-        <!-- render_partial 'travels.views.reservation' arg1=object arg2=user -->
-        <h1>Tu będzie rezerwacja</h1>
+        aaa
+        {% render_partial 'travels.views.reservation' arg1=object arg2=user %}
       </div>
         {% endif %}
     </div>
   </div>
 </div>
+
 {% endblock content %}
+
+{% block inline_javascript %}
+  <script type="text/javascript" src="{% static 'js/reservation.js'%}"></script>
+{% endblock inline_javascript %}
