@@ -44,15 +44,23 @@ class Trip(models.Model):
     STARS = [(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6)]
 
     title = models.CharField(max_length=256, verbose_name=_("Nazwa wycieczki"))
-    description1 = models.CharField(max_length=1000, verbose_name=_("Opis1 wycieczki"))
-    description2 = models.CharField(max_length=1000, blank=True, verbose_name=_("Opis2 wycieczki"))
-    description3 = models.CharField(max_length=1000, blank=True, verbose_name=_("Opis3 wycieczki"))
-    description4 = models.CharField(max_length=1000, blank=True, verbose_name=_("Opis4 wycieczki"))
+    hotelstars = models.IntegerField(choices=STARS, blank=True, verbose_name="Gwiazdki hotelu")
+    rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, verbose_name="Ocena wycieczki")
+    head_description = models.TextField(max_length=1000, verbose_name=_("Główny opis"))
+    location_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Opis miejsca"))
+    beach_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Opis Plaży"))
+    hotel_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Opis Hotelu"))
+    room_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Opis pokoju"))
+    sport_and_entertainment_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Sport i rozrywka"))
+    all_inclusive_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Opis all inclusive"))
+    for_free_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Gratisy"))
+    trip_plan_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Plan wycieczki"))
+    benefits_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Swiadczenia"))
     country = models.CharField(max_length=50, verbose_name=_("Kraj wycieczki"))
+    city = models.CharField(max_length=50, verbose_name=_("Miasto wycieczki"))
     countryEN = models.CharField(max_length=50, verbose_name=_("Kraj wycieczki po angielsku"))
     currency = models.CharField(max_length=5, verbose_name=_("Skrót waluty"))
     timezone = models.CharField(max_length=7, verbose_name=_("Strefa czasowa"))
-    stars = models.IntegerField(choices=STARS, blank=True, verbose_name="Gwiazdki hotelu wycieczki")
     climate = models.CharField(max_length=20, choices=Climates.choices, verbose_name="Klimat")
     landscape = models.CharField(max_length=15, choices=Landscapes.choices, verbose_name="Krajobraz")
     type = models.CharField(max_length=20, choices=Types.choices, verbose_name="Rodzaj wycieczki")
@@ -80,7 +88,7 @@ class Trip(models.Model):
 
     @property
     def weather_api(self):
-        weather = get_weather(self.country)
+        weather = get_weather(self.countryEN)
         return weather
 
     @property
