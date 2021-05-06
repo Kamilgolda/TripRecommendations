@@ -20,8 +20,12 @@
         {% endfor %}
       </div>
       <h2>{{ trip.city }}</h2>
-      <h2>Ocena: {{ trip.rating }}/6</h2>
-      <h2>Gwiazdki hotelu: {{trip.hotelstars}}</h2>
+      {% if trip.rating != None %}
+        <h2>Ocena: {{ trip.rating }}/6</h2>
+      {% endif %}
+      {% if trip.hotelstars != None %}
+        <h2>Gwiazdki hotelowe: {{trip.hotelstars}}</h2>
+      {% endif %}
       <h2>Czas trwania: {{ trip.duration }} dni</h2>
       <div class="descriptions">
         <h6>{{ trip.head_description|linebreaks }}</h6>

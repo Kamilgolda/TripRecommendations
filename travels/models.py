@@ -7,6 +7,7 @@ from biuropodrozy.outer_api.exchange_rates_api import get_rate_in_pln
 from biuropodrozy.outer_api.covid_api import get_covid
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.conf import settings
+import datetime
 from datetime import date
 
 
@@ -44,20 +45,20 @@ class Trip(models.Model):
     STARS = [(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6)]
 
     title = models.CharField(max_length=256, verbose_name=_("Nazwa wycieczki"))
-    hotelstars = models.IntegerField(choices=STARS, blank=True, verbose_name="Gwiazdki hotelu")
-    rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, verbose_name="Ocena wycieczki")
-    head_description = models.TextField(max_length=1000, verbose_name=_("Główny opis"))
-    location_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Opis miejsca"))
-    beach_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Opis Plaży"))
-    hotel_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Opis Hotelu"))
-    room_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Opis pokoju"))
-    sport_and_entertainment_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Sport i rozrywka"))
-    all_inclusive_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Opis all inclusive"))
-    for_free_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Gratisy"))
-    trip_plan_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Plan wycieczki"))
-    benefits_description = models.TextField(max_length=1000, blank=True, verbose_name=_("Swiadczenia"))
+    hotelstars = models.IntegerField(choices=STARS, blank=True, null=True, verbose_name="Gwiazdki hotelu")
+    rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True, verbose_name="Ocena wycieczki")
+    head_description = models.TextField(max_length=2000, verbose_name=_("Główny opis"))
+    location_description = models.TextField(max_length=2000, blank=True, verbose_name=_("Opis miejsca"))
+    beach_description = models.TextField(max_length=2000, blank=True, verbose_name=_("Opis Plaży"))
+    hotel_description = models.TextField(max_length=2000, blank=True, verbose_name=_("Opis Hotelu"))
+    room_description = models.TextField(max_length=2000, blank=True, verbose_name=_("Opis pokoju"))
+    sport_and_entertainment_description = models.TextField(max_length=2000, blank=True, verbose_name=_("Sport i rozrywka"))
+    all_inclusive_description = models.TextField(max_length=2000, blank=True, verbose_name=_("Opis all inclusive"))
+    for_free_description = models.TextField(max_length=2000, blank=True, verbose_name=_("Gratisy"))
+    trip_plan_description = models.TextField(max_length=10000, blank=True, verbose_name=_("Plan wycieczki"))
+    benefits_description = models.TextField(max_length=2000, blank=True, verbose_name=_("Swiadczenia"))
     country = models.CharField(max_length=50, verbose_name=_("Kraj wycieczki"))
-    city = models.CharField(max_length=50, verbose_name=_("Miasto wycieczki"))
+    city = models.CharField(max_length=50, verbose_name=_("Miejsce wycieczki"))
     countryEN = models.CharField(max_length=50, verbose_name=_("Kraj wycieczki po angielsku"))
     currency = models.CharField(max_length=5, verbose_name=_("Skrót waluty"))
     timezone = models.CharField(max_length=7, verbose_name=_("Strefa czasowa"))
@@ -65,7 +66,7 @@ class Trip(models.Model):
     landscape = models.CharField(max_length=15, choices=Landscapes.choices, verbose_name="Krajobraz")
     type = models.CharField(max_length=20, choices=Types.choices, verbose_name="Rodzaj wycieczki")
     transport = models.CharField(max_length=20, choices=Transports.choices, verbose_name="Rodzaj transportu")
-    price = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(100000)], verbose_name="Cena wycieczki")
+    price = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(100000)], verbose_name="Cena wycieczki dla 1os.")
     duration = models.IntegerField(verbose_name="Ilość dni wycieczki")
     slug = models.SlugField(max_length=256, unique=True, blank=True)
 
@@ -84,7 +85,7 @@ class Trip(models.Model):
         return reverse("trips:detail", kwargs={"slug": self.slug})
 
     def __str__(self):
-        return self.title
+        return f"{self.title} {self.duration}dni"
 
     @property
     def weather_api(self):
@@ -105,7 +106,8 @@ class Trip(models.Model):
 class TripPicture(models.Model):
     """TripPictures model class"""
     trip = models.ForeignKey('Trip', on_delete=models.CASCADE)
-    picture = models.ImageField()
+    picture = models.ImageField(upload_to='travels/')
+    default = models.BooleanField(default=False)
 
     @property
     def picture_url(self):
@@ -116,13 +118,10 @@ class TripDates(models.Model):
     """TripDates model class"""
     trip = models.ForeignKey('Trip', on_delete=models.CASCADE)
     start_date = models.DateField(auto_now=False, auto_now_add=False, verbose_name="Data rozpoczęcia")
-    end_date = models.DateField(auto_now=False, auto_now_add=False, verbose_name="Data zakończenia")
+    end_date = models.DateField(auto_now=False, auto_now_add=False, blank=True, verbose_name="Data zakończenia")
 
     def save(self, *args, **kwargs):
-        duration = self.end_date - self.start_date
-        days = duration.days
-        if not self.trip.duration == days:
-            raise Exception("Can't create new TripDates object - duration is incorrect")
+        self.end_date = self.start_date + datetime.timedelta(days=self.trip.duration)
         super().save(*args, **kwargs)
 
 

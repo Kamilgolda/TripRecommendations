@@ -13,12 +13,12 @@ from django.views.generic import DetailView
 
 class TripsListView(ListView):
     model = Trip
-    paginate_by = 20
+    paginate_by = 10
     context_object_name = "trips"
 
     def get_context_data(self, **kwargs):
         context = super(TripsListView, self).get_context_data(**kwargs)
-        context['pictures'] = TripPicture.objects.all().order_by('trip').distinct('trip')
+        context['pictures'] = TripPicture.objects.all().filter(default=True)
         return context
 
 
