@@ -97,7 +97,7 @@
       </div>
       {% if user.is_authenticated %}
       <div id="reservation">
-        {% render_partial 'travels.views.reservation' arg1=object arg2=user %}
+        {% render_partial 'travels.views.reservation' arg1=object arg2=user arg3=dates %}
       </div>
         {% endif %}
     </div>
