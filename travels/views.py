@@ -8,6 +8,7 @@ from django.views.generic.edit import CreateView
 from .forms import TripReservationForms
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
+
 # Create your views here.
 
 
@@ -42,8 +43,15 @@ def reservation(request, *args, **kwargs):
 
     if request.method == 'POST':
         r_form = TripReservationForms(request.POST)
+        print(r_form['user'])
         if r_form.is_valid():
+
+            r_form.save(False)
+            data = r_form.cleaned_data
+            data['persons'] = 3
+            print(data)
             r_form.save()
+
             messages.success(request, f'Rezerwacja została złożona')
             path = "/oferty"
             return redirect(path)

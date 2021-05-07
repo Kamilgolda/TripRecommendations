@@ -1,16 +1,12 @@
 <h2>Formularz Rezerwacji</h2></br>
     <form method="POST" action="succes">
-
-        <div id="hidden">
+        {% csrf_token %}
+      <div id="hidden">
             <p id="k1">{{ kwargs.arg1 }}</p>
             <p id="k2">{{ kwargs.arg2 }}</p>
-            <p id="k3">{{ kwargs.arg1.price }}</p>
-
             {{ form.user }}
             {{ form.trip }}
-            {{ form.price }}
-        </div>
-        {% csrf_token %}
+      </div>
         <label for="{{ form.persons.id_for_label }}">Osób:</label>
         {{ form.persons}}
 
