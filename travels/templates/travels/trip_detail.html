@@ -95,17 +95,14 @@
       <div class="covid">
       <h2>Aktualna liczba zachorowań na covid: {{trip.covid_api.today_covid}}</h2>
       </div>
-      {% if user.is_authenticated %}
       <div id="reservation">
-        <h2>Formularz Rezerwacji</h2></br>
+        {% if user.is_authenticated %}
         {% include 'travels/partials/reservation_form.html' %}
-<!--    <form method="POST"> {% csrf_token %}-->
-<!--            {{form.as_p}}-->
-<!--      <input type="submit" value="Rezerwuj">-->
-<!--    </form>-->
-
-      </div>
+        {% else %}
+        <h2>Aby złożyć rezerwację musisz się zalogować</h2>
         {% endif %}
+      </div>
+
     </div>
   </div>
 </div>

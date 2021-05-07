@@ -76,35 +76,21 @@ max-width:50vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    flex-flow: column;
     margin-right:3%;
     background-color: rgba(255, 255, 255,0.5);
     border-radius: 60px;
     position: relative;
     float: left;
     top: 100px;
-    padding-bottom: 115px;
+    padding-bottom: 10px;
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
+    width: 100%;
 }
-#reservation form input,select{
-  display:block;
-}
-
-#hidden{
-    display: none;
-}
-#reservation form{
-    display: grid;
-}
-#reservation form label, input,select,button,h2{
-    font-size: 1.2em;
-}
-#reservation form label{
-    font-weight: bold;
+.buttonHolder{
+  text-align: center;
+  margin-bottom: 2vh;
 }
 
-#reservation form {
-    margin-top: 25px;
-}
