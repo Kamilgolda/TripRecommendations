@@ -1,9 +1,8 @@
 from django.contrib.auth.decorators import login_required
-from .forms import TripReservationForms
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.shortcuts import render
-from .models import TripReservation, Trip, TripPicture
+from .models import TripReservation, Trip, TripPicture, TripDates
 from django.views.generic.edit import CreateView
 from .forms import TripReservationForms
 from django.views.generic.list import ListView
@@ -29,7 +28,8 @@ class TripDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(TripDetailView, self).get_context_data(**kwargs)
-        context['pictures'] = TripPicture.objects.all()
+        context['pictures'] = TripPicture.objects.filter(trip=context['trip'])
+        context['dates'] = TripDates.objects.filter(trip=context['trip'])
         return context
 
 
