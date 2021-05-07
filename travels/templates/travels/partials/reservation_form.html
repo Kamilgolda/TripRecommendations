@@ -1,24 +1,9 @@
-<h2>Formularz Rezerwacji</h2></br>
-    <form method="POST" action="succes">
-        {% csrf_token %}
-      <div id="hidden">
-            <p id="k1">{{ kwargs.arg1 }}</p>
-            <p id="k2">{{ kwargs.arg2 }}</p>
-            {{ form.user }}
-            {{ form.trip }}
-      </div>
-        <label for="{{ form.persons.id_for_label }}">Osób:</label>
-        {{ form.persons}}
+<!--    <form method="POST"> {% csrf_token %}-->
+<!--            {{form.as_p}}-->
+<!--      <input type="submit" value="Rezerwuj">-->
+<!--    </form>-->
+    {% load crispy_forms_tags %}
 
-        <label for="{{ form.phone.id_for_label }}">Numer kontaktowy:</label>
-        {{ form.phone }}
-
-        <label for="{{ form.guide.id_for_label }}">Prywatny przewodnik (+300PLN)</label>
-        {{ form.guide }}
-
-        <label for="{{ form.room.id_for_label }}">Pokój premium (+400PLN)</label>
-        {{ form.room }}
-
-        <h2 id="cena">Cena : <span id="out">{{ kwargs.arg1.price }}</span> zł</h2>
-        <button type="submit">Rezerwuj</button>
-    </form>
+{% block content %}
+  {% crispy form%}
+{% endblock %}

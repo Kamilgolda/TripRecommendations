@@ -87,20 +87,20 @@ class Trip(models.Model):
     def __str__(self):
         return f"{self.title} {self.duration}dni"
 
-    @property
-    def weather_api(self):
-        weather = get_weather(self.countryEN)
-        return weather
-
-    @property
-    def exchange_rates_api(self):
-        rate = get_rate_in_pln(self.currency)
-        return rate
-
-    @property
-    def covid_api(self):
-        covid = get_covid(self.countryEN)
-        return covid
+    # @property
+    # def weather_api(self):
+    #     weather = get_weather(self.countryEN)
+    #     return weather
+    #
+    # @property
+    # def exchange_rates_api(self):
+    #     rate = get_rate_in_pln(self.currency)
+    #     return rate
+    #
+    # @property
+    # def covid_api(self):
+    #     covid = get_covid(self.countryEN)
+    #     return covid
 
 
 class TripPicture(models.Model):

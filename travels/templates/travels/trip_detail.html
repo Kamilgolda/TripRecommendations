@@ -97,7 +97,13 @@
       </div>
       {% if user.is_authenticated %}
       <div id="reservation">
-        {% render_partial 'travels.views.reservation' arg1=object arg2=user arg3=dates %}
+        <h2>Formularz Rezerwacji</h2></br>
+        {% include 'travels/partials/reservation_form.html' %}
+<!--    <form method="POST"> {% csrf_token %}-->
+<!--            {{form.as_p}}-->
+<!--      <input type="submit" value="Rezerwuj">-->
+<!--    </form>-->
+
       </div>
         {% endif %}
     </div>
