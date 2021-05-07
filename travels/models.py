@@ -124,16 +124,21 @@ class TripDates(models.Model):
         self.end_date = self.start_date + datetime.timedelta(days=self.trip.duration)
         super().save(*args, **kwargs)
 
+    def __str__(self):
+        return f"{self.trip} {self.start_date}___{self.end_date}"
+
 
 class TripReservation(models.Model):
     """Reservation model class"""
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     trip = models.ForeignKey('Trip', on_delete=models.PROTECT)
+    date = models.ForeignKey("TripDates", on_delete=models.PROTECT, verbose_name="Wybierz termin")
     persons = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], verbose_name="Ilość osób")
     phone = models.CharField(max_length=12, verbose_name="Numer kontaktowy")
     guide = models.BooleanField(default=0, verbose_name="Prywatny przewodnik")
     room = models.BooleanField(default=0, verbose_name="Pokój premium")
+    all_inclusive = models.BooleanField(default=0, verbose_name="All inclusive")
     price = models.DecimalField(blank=True, max_digits=8, decimal_places=2, verbose_name="Cena wycieczki")
 
     def save(self, *args, **kwargs):
@@ -141,5 +146,7 @@ class TripReservation(models.Model):
         if self.room != 0:
             self.price = self.price + 400
         if self.guide != 0:
-            self.price = self.price + 300
+            self.price = self.price + 700
+        if self.all_inclusive !=0:
+            self.price = self.price + 500
         super().save(*args, **kwargs)

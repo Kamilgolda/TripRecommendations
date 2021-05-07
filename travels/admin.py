@@ -37,8 +37,9 @@ class TripsDatesAdmin(admin.ModelAdmin):
 
 
 class TripsReservationAdmin(admin.ModelAdmin):
-    exclude = ("price",)
     list_display = ("user", "trip", "persons", "price")
+    list_filter = ['trip', 'user']
+    search_fields = ['user']
 
 
 admin.site.register(Trip, TripsAdmin)
