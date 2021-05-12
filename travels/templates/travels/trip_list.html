@@ -10,7 +10,8 @@
 <div class="contOferty">
     <div id="oferty">
         {% for trip in trips %}
-        <div class="boxWycieczki">
+        <a href="{% url 'travels:details' slug=trip.slug %}">
+          <div class="boxWycieczki">
             <div class="imgBx">
               <img src="
                 {% for picture in pictures %}
@@ -21,9 +22,9 @@
                " alt="obrazek wycieczki" onerror="this.src='https://i.content4travel.com/cms/img/u/kraj/1/chorwacja_0.jpg?version=13'">
             </div>
 
-            <a href="{% url 'travels:details' slug=trip.slug %}" class="szczegoly">Sprawdź szczegóły oferty</a>
+            <span class="szczegoly">Sprawdź szczegóły oferty</span>
 
-            <div class="content">
+            <div class="contentbox">
                 <h2>{{trip.title}}<br>
                     <span>
                         {{trip.country}} {{trip.city}}
@@ -38,7 +39,8 @@
                 </span>
                 </h2>
             </div>
-        </div>
+          </div>
+        </a>
       {% endfor %}
       <div class="pagination">
         <span class="step-links">
