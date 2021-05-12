@@ -2,11 +2,14 @@ from django.contrib import admin
 from travels.models import Trip, TripPicture, TripDates, TripReservation
 #from django.utils.html import format_html
 
+
 class TripPicturesInline(admin.TabularInline):
     model = TripPicture
 
+
 class TripDatesInline(admin.TabularInline):
     model = TripDates
+
 
 class TripsAdmin(admin.ModelAdmin):
     exclude = ("slug",)
@@ -18,7 +21,7 @@ class TripsAdmin(admin.ModelAdmin):
     ]
     save_as = True
 
-    def no_of_terms(self,obj):
+    def no_of_terms(self, obj):
         terms = TripDates.objects.all().filter(trip=obj)
         no = len(terms)
         return no
