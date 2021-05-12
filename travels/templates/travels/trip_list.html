@@ -12,11 +12,13 @@
         {% for trip in trips %}
         <div class="boxWycieczki">
             <div class="imgBx">
-              {% for picture in pictures %}
-                {% if picture.trip == trip %}
-               <img src="{{picture.picture_url}}">
-                {% endif %}
-              {% endfor %}
+              <img src="
+                {% for picture in pictures %}
+                  {% if picture.trip == trip %}
+                  {{picture.picture_url}}
+                  {% endif %}
+                {% endfor %}
+               " alt="obrazek wycieczki" onerror="this.src='https://i.content4travel.com/cms/img/u/kraj/1/chorwacja_0.jpg?version=13'">
             </div>
 
             <a href="{% url 'travels:details' slug=trip.slug %}" class="szczegoly">Sprawdź szczegóły oferty</a>
