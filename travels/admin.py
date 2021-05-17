@@ -1,5 +1,5 @@
 from django.contrib import admin
-from travels.models import Trip, TripPicture, TripDates, TripReservation
+from travels.models import Trip, TripPicture, TripDates, TripReservation, Polling
 #from django.utils.html import format_html
 
 
@@ -45,8 +45,14 @@ class TripsReservationAdmin(admin.ModelAdmin):
     search_fields = ['user']
 
 
+class PollingAdmin(admin.ModelAdmin):
+    list_display = ["user"]
+    list_filter = ['user']
+
+
 admin.site.register(Trip, TripsAdmin)
 admin.site.register(TripPicture, TripsPicturesAdmin)
 admin.site.register(TripDates, TripsDatesAdmin)
 admin.site.register(TripReservation, TripsReservationAdmin)
+admin.site.register(Polling, PollingAdmin)
 

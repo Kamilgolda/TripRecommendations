@@ -150,3 +150,37 @@ class TripReservation(models.Model):
         if self.all_inclusive !=0:
             self.price = self.price + 500
         super().save(*args, **kwargs)
+
+
+class Polling(models.Model):
+    """Polling model class"""
+
+    class Places(models.TextChoices):
+        POLAND = 'Tylko po Polsce', _('Tylko po Polsce')
+        POLAND_AND_ABROAD = 'Po Polsce oraz za granicą', _('Po Polsce oraz za granicą')
+        ABROAD = 'Tylko za granicą', _('Tylko za granicą')
+
+    class Transports(models.TextChoices):
+        SAMOLOT = 'Samolot', _('Samolot')
+        DOJAZD_WLASNY = 'Dojazd Własny', _('Dojazd Własny')
+        AUTOBUS = 'Autobus', _('Autobus')
+
+    class Types(models.TextChoices):
+        AKTYWNY_WYPOCZYNEK = 'Aktywny wypoczynek', _('Aktywny wypoczynek')
+        WYPOCZYNEK = 'Wypoczynek', _('Wypoczynek')
+        ZWIEDZANIE = 'Zwiedzanie', _('Zwiedzanie')
+
+    class Landscapes(models.TextChoices):
+        GORY = 'Góry', _('Góry')
+        PLAZA = 'Plaża', _('Plaża')
+        PUSTYNIA = 'Pustynia', _('Pustynia')
+        LAS = 'Las', _('Las')
+        MIASTO = 'Miasto', _('Miasto')
+        WIES = 'Wieś', _('Wieś')
+        MORZE = 'Morze', _('Morze')
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    preferred_place = models.CharField(max_length=50, choices=Places.choices, verbose_name="Jakie podróże Pana/Panią interesują?")
+    preferred_transport = models.CharField(max_length=50, choices=Transports.choices, verbose_name="Jaki środek transportu Pan/Pani preferuje?")
+    preferred_type = models.CharField(max_length=50, choices=Types.choices, verbose_name="Jaki cel wycieczki wybrałby/wybrałaby Pan/Pani za najbardziej odpowiedni dla siebie?")
+    preferred_landscape = models.CharField(max_length=50, choices=Landscapes.choices, verbose_name="Jaki krajobraz wybrałby/wybrałaby Pan/Pani za najbardziej odpowiedni dla siebie?")

@@ -1,0 +1,22 @@
+.pollingWindow {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    background-color: rgba(255, 255, 255,0.5);
+    border-radius: 60px;
+    margin-bottom: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+    font-size: large;
+}
+.pollingWindow form{
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+.pollingWindow form fieldset legend{
+text-align:center;
+}
+.pollingWindow form .buttonHolder{
+text-align:center;
+}
