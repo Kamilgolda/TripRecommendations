@@ -8,7 +8,10 @@ from django.views.generic import TemplateView
 from django.shortcuts import render
 from django.contrib import messages
 from travels.models import TripReservation
-
+from biuropodrozy.users.models import Contact
+from django.views.generic.edit import CreateView
+from biuropodrozy.users.forms import ContactForm
+from django.urls import reverse_lazy
 
 User = get_user_model()
 
@@ -85,3 +88,15 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
 
 user_redirect_view = UserRedirectView.as_view()
+
+
+class ContactCreateView(CreateView):
+    model = Contact
+    form_class = ContactForm
+    template_name = 'pages/contact.html'
+    success_url = reverse_lazy('contact')
+
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        messages.success(self.request, f'Dziekujemy za złożenie pytania, postaramy się odpisać jak najszybciej')
+        return result

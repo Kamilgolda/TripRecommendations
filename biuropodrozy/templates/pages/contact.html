@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static i18n %}
+{% load static i18n crispy_forms_tags %}
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/contact.css'%}">
@@ -11,17 +12,7 @@
         <H1> ZADAJ PYTANIE</H1>
 
         <div class="FormContact">
-            <div>
-                <form method="POST">
-                  <label>Pole 1</label>
-                  <input type="text">
-                   <label>Pole 2</label>
-                  <input type="text">
-
-                    <div class="submit">
-                        <button type="submit">Wyslij</button>
-                    </div>
-                </form>
+            {% crispy form %}
             </div>
 
         </div>
