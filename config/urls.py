@@ -6,6 +6,8 @@ from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 from rest_framework.authtoken.views import obtain_auth_token
+from biuropodrozy.users.views import ContactCreateView
+
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
@@ -13,7 +15,8 @@ urlpatterns = [
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
     path('oferty/', include("travels.urls", namespace="travels")),
-    path('kontakt/', TemplateView.as_view(template_name="pages/contact.html"), name='contact'),
+    path('kontakt/', ContactCreateView.as_view(), name='contact'),
+    #path('kontakt/',TemplateView.as_view(template_name="pages/about.html"), name='contact'),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
