@@ -82,7 +82,7 @@ class Trip(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse("trips:detail", kwargs={"slug": self.slug})
+        return reverse("travels:details", kwargs={"slug": self.slug})
 
     def __str__(self):
         return f"{self.title} {self.duration}dni"
