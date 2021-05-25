@@ -111,7 +111,6 @@ class OthersChooseListView(ListView):
         return Trip.objects.all()
 
 
-
 class TripDetailView(FormMixin, DetailView):
     model = Trip
     context_object_name = "trip"
@@ -165,3 +164,5 @@ class QuestionnaireView(LoginRequiredMixin, CreateView):
         result = super().form_valid(form)
         messages.success(self.request, f'Dziękujemy za wypełnienie ankiety')
         return result
+
+

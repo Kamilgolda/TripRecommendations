@@ -1,0 +1,76 @@
+{% extends "account/base.html" %}
+{% load static i18n %}
+
+{% block inner %}
+  <table class="table table-bordered table-hover table-responsive">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Nazwa wycieczki
+            </th>
+            <th>
+                Ilość osób
+            </th>
+            <th>
+                Dodatkowe opcje:
+            </th>
+            <th>
+                Data rozpoczęcia
+            </th>
+            <th>
+                Data zakończenia:
+            </th>
+            <th>
+                Cena:
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+          {% for reservation in reservations %}
+        <tr>
+            <td>
+              <a href="{{ reservation.trip.get_absolute_url}}">{{reservation.trip}}</a>
+            </td>
+            <td>
+                {{reservation.persons}}
+            </td>
+
+            <td>
+              <ul class="list-group">
+                <li>
+                Prywatny przewodnik: {% if reservation.guide == True %}
+                  TAK
+                  {% else %} NIE
+                  {% endif %}
+                </li>
+                <li>
+                Pokój premium: {% if reservation.room == True %}
+                  TAK
+                  {% else %} NIE
+                  {% endif %}
+                </li>
+                <li>
+                All Inclusive: {% if reservation.all_inclusive == True %}
+                  TAK
+                  {% else %} NIE
+                  {% endif %}
+                </li>
+              </ul>
+            </td>
+            <td>
+                {{reservation.date.start_date}}
+            </td>
+
+            <td>
+                {{reservation.date.end_date}}
+            </td>
+            <td>
+                {{reservation.price}}zł
+            </td>
+        </tr>
+          {% endfor %}
+    </tbody>
+</table>
+
+{% endblock inner %}
+

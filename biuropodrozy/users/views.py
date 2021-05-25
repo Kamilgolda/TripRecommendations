@@ -3,10 +3,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import DetailView, RedirectView, UpdateView
+from django.views.generic import DetailView, RedirectView, UpdateView, ListView
 from django.views.generic import TemplateView
 from django.shortcuts import render
 from django.contrib import messages
+from travels.models import TripReservation
 from biuropodrozy.users.models import Contact
 from django.views.generic.edit import CreateView
 from biuropodrozy.users.forms import ContactForm
@@ -23,6 +24,19 @@ class UserDetailView(LoginRequiredMixin, DetailView):
 
 
 user_detail_view = UserDetailView.as_view()
+
+
+class UserReservationsView(LoginRequiredMixin, ListView):
+    template_name = 'users/user_reservations.html'
+    model = TripReservation
+    paginate_by = 5
+    context_object_name = "reservations"
+
+    def get_queryset(self):
+        return TripReservation.objects.filter(user=self.request.user)
+
+
+user_reservations_view = UserReservationsView.as_view()
 
 
 class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
