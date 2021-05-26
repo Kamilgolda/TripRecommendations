@@ -11,7 +11,6 @@ class Command(BaseCommand):
     users = list()
     trips = list()
     recommendations = list()
-    data = np.zeros((2, 2), dtype=int)
     full_path = "travels/management/files/algorytm.xlsx"
 
     def handle(self, *args, **options):
@@ -19,8 +18,12 @@ class Command(BaseCommand):
         for trip in self.reservations:
             self.users.append(trip.user)
             self.trips.append(trip.trip)
+        # lista zerowa
+        x = len(self.users)
+        y = len(self.trips)
+        data = np.zeros((x, y), dtype=int)
         # DataFrame zerowy
-        df1 = pd.DataFrame(self.data)
+        df1 = pd.DataFrame(data)
         df1.index = self.users
         df1.columns = self.trips
         # pętla zapisująca rezerwacje do DataFrame'u
@@ -39,10 +42,10 @@ class Command(BaseCommand):
                 wartosc = tablica[0][nazwa]
                 self.recommendations.append([wiersz, nazwa, wartosc])
                 tablica = tablica.drop([nazwa])
-
+        # DataFrame rekomendacji
         df2 = pd.DataFrame()
         df2 = df2.append(self.recommendations, ignore_index=True)
-
+        # zapis do excela
         with pd.ExcelWriter(self.full_path) as writer:
             df1.to_excel(writer, sheet_name='Dane')
             df2.to_excel(writer, sheet_name='Rekomendacje')
