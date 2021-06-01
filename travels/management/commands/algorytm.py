@@ -40,7 +40,7 @@ class Command(BaseCommand):
             korelacja = df1.corrwith(df1[wiersz])
             tablica = pd.DataFrame(korelacja)
             tablica = tablica.drop([wiersz])
-            while i != 10:
+            while i != 4:
                 # znalezienie 10 najbardziej podobnych wycieczek
                 nazwa = tablica.idxmax().item()
                 wartosc = tablica[0][nazwa]
