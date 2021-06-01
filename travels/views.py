@@ -1,7 +1,9 @@
+import os
+
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Trip, TripPicture, TripDates, Polling
+from .models import Trip, TripPicture, TripDates, Polling, TripReservation
 from django.views.generic.edit import CreateView
 from .forms import TripReservationForm, PollingForm
 from django.views.generic.list import ListView
@@ -11,10 +13,12 @@ from django.urls import reverse_lazy
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+import pandas as pd
 
 
 class SelectedForYouListView(ListView):
     model = Trip
+    template_name = 'travels/trip_list.html'
     paginate_by = 10
     context_object_name = "trips"
 
@@ -27,6 +31,26 @@ class SelectedForYouListView(ListView):
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
+            user_reservations = TripReservation.objects.filter(user=self.request.user)
+            trips = set()
+            for reservation in user_reservations:
+                trips.add(reservation.trip.__str__())
+            recommended_travels_ids = set()
+            exists = os.path.isfile('travels/management/files/algorytm.xlsx')
+            if exists:
+                full_path = 'travels/management/files/algorytm.xlsx'
+                travels = pd.read_excel(full_path, sheet_name="Rekomendacje")
+                recommended_travels = set()
+                for trip in trips:
+                    for i in range(len(travels)):
+                        if travels[0][i] == trip:
+                            recommended_travels.add(travels[1][i])
+                recommended_travels.difference_update(trips)
+                all_trips = Trip.objects.all()
+                for trip in all_trips:
+                    if recommended_travels.__contains__(str(trip)):
+                        recommended_travels_ids.add(trip.pk)
+
             ankieta = Polling.objects.filter(user=self.request.user)[:1]
             if len(ankieta) > 0:
                 ankieta = ankieta[0]
@@ -41,13 +65,6 @@ class SelectedForYouListView(ListView):
                                                     type=ankieta.preferred_type,
                                                     transport=ankieta.preferred_transport
                                                     )
-                    if len(query) < 5:
-                        query = Trip.objects.filter(country="Polska",
-                                                    type=ankieta.preferred_type
-                                                    )
-                    if len(query) < 5:
-                        query = Trip.objects.filter(country="Polska"
-                                                    )
 
                 if ankieta.preferred_place == 'Tylko za granicą':
                     query = Trip.objects.filter(type=ankieta.preferred_type,
@@ -58,11 +75,6 @@ class SelectedForYouListView(ListView):
                         query = Trip.objects.filter(type=ankieta.preferred_type,
                                                     transport=ankieta.preferred_transport
                                                     ).exclude(country="Polska")
-                    if len(query) < 5:
-                        query = Trip.objects.filter(type=ankieta.preferred_type
-                                                    ).exclude(country="Polska")
-                    if len(query) < 5:
-                        query = Trip.objects.exclude(country="Polska")
 
                 if ankieta.preferred_place == 'Po Polsce oraz za granicą':
                     query = Trip.objects.filter(type=ankieta.preferred_type,
@@ -72,9 +84,15 @@ class SelectedForYouListView(ListView):
                         query = Trip.objects.filter(type=ankieta.preferred_type,
                                                     transport=ankieta.preferred_transport
                                                     )
-                    if len(query) < 5:
-                        query = Trip.objects.filter(type=ankieta.preferred_type)
-                return query
+
+                for trip in query:
+                    if trips.__contains__(str(trip)):
+                        pass
+                    else:
+                        recommended_travels_ids.add(trip.pk)
+
+            query = Trip.objects.filter(pk__in=recommended_travels_ids).order_by('-rating')
+            return query
 
         return Trip.objects.none()
 
