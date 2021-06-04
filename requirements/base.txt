@@ -12,6 +12,8 @@ uvicorn[standard]==0.13.4  # https://github.com/encode/uvicorn
 Unidecode==1.2.0
 pandas==1.2.4
 openpyxl==3.0.7
+scikit-learn==0.24.2
+
 
 # Django
 # ------------------------------------------------------------------------------
