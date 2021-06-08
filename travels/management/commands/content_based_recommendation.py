@@ -9,7 +9,11 @@ class Command(BaseCommand):
 
     df = pd.read_csv(full_path, delimiter=',')
 
-    def handle(self, trip_name, *args, **options):
+    def add_arguments(self, parser):
+        parser.add_argument('trip_name', type=str, help='Trip name')
+
+    def handle(self, *args, **options):
+        trip_name = options['trip_name']
         trip_id = self.df[self.df.title == trip_name]["id"].values[0]
         # trip_cluster = self.df[self.df.title == trip_name]["cluster"].values[0]
 
@@ -26,7 +30,3 @@ class Command(BaseCommand):
         X2['distance'] = distances
         X3 = X2.sort_values(by=['distance'])
         print(X3)
-
-
-command = Command()
-command.handle('Hotel Odysee Resort')
