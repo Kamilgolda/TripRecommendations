@@ -14,6 +14,8 @@ from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 import pandas as pd
+import travels.content_based_recommendation as cbr
+from django.db.models import Count
 
 
 class SelectedForYouListView(ListView):
@@ -32,24 +34,14 @@ class SelectedForYouListView(ListView):
     def get_queryset(self):
         if self.request.user.is_authenticated:
             user_reservations = TripReservation.objects.filter(user=self.request.user)
-            trips = set()
+            result_set = set()
             for reservation in user_reservations:
-                trips.add(reservation.trip.__str__())
-            recommended_travels_ids = set()
-            exists = os.path.isfile('travels/management/files/algorytm.xlsx')
-            if exists:
-                full_path = 'travels/management/files/algorytm.xlsx'
-                travels = pd.read_excel(full_path, sheet_name="Rekomendacje")
-                recommended_travels = set()
-                for trip in trips:
-                    for i in range(len(travels)):
-                        if travels[0][i] == trip:
-                            recommended_travels.add(travels[1][i])
-                recommended_travels.difference_update(trips)
-                all_trips = Trip.objects.all()
-                for trip in all_trips:
-                    if recommended_travels.__contains__(str(trip)):
-                        recommended_travels_ids.add(trip.pk)
+                try:
+                    result_set.update(cbr.get_result(reservation.trip.title))
+                except IndexError:
+                    print("Brak wycieczki w V2.csv.csv")
+                except Exception:
+                    print("Error")
 
             ankieta = Polling.objects.filter(user=self.request.user)[:1]
             if len(ankieta) > 0:
@@ -86,12 +78,12 @@ class SelectedForYouListView(ListView):
                                                     )
 
                 for trip in query:
-                    if trips.__contains__(str(trip)):
+                    if result_set.__contains__(trip.title):
                         pass
                     else:
-                        recommended_travels_ids.add(trip.pk)
+                        result_set.add(trip.title)
 
-            query = Trip.objects.filter(pk__in=recommended_travels_ids).order_by('-rating')
+            query = Trip.objects.filter(title__in=result_set).order_by('-rating')
             return query
 
         return Trip.objects.none()
@@ -110,7 +102,12 @@ class PopularListView(ListView):
         return context
 
     def get_queryset(self):
-        return Trip.objects.all()
+        count_reservations = TripReservation.objects.annotate(count=Count('trip')).order_by('count')[:50]
+        result_set = set()
+        for reservation in count_reservations:
+            result_set.add(reservation.trip.pk)
+        query = Trip.objects.filter(pk__in=result_set)
+        return query
 
 
 class OthersChooseListView(ListView):
@@ -126,8 +123,31 @@ class OthersChooseListView(ListView):
         return context
 
     def get_queryset(self):
-        return Trip.objects.all()
+        if self.request.user.is_authenticated:
+            user_reservations = TripReservation.objects.filter(user=self.request.user)
+            trips = set()
+            for reservation in user_reservations:
+                trips.add(reservation.trip.__str__())
+            recommended_travels_ids = set()
+            exists = os.path.isfile('travels/management/files/algorytm.xlsx')
+            if exists:
+                full_path = 'travels/management/files/algorytm.xlsx'
+                travels = pd.read_excel(full_path, sheet_name="Rekomendacje")
+                recommended_travels = set()
+                for trip in trips:
+                    for i in range(len(travels)):
+                        if travels[0][i] == trip:
+                            recommended_travels.add(travels[1][i])
+                recommended_travels.difference_update(trips)
+                all_trips = Trip.objects.all()
+                for trip in all_trips:
+                    if recommended_travels.__contains__(str(trip)):
+                        recommended_travels_ids.add(trip.pk)
 
+                query = Trip.objects.filter(pk__in=recommended_travels_ids).order_by('-rating')
+                return query
+
+        return Trip.objects.none()
 
 class TripDetailView(FormMixin, DetailView):
     model = Trip
