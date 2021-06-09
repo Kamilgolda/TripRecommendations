@@ -142,12 +142,10 @@ text-decoration: none;
 
 .btn-primary{
 width:100%;
--webkit-text-stroke: thin;
 padding-bottom:4vh;
 }
 
 .btn-dark{
 width:100%;
--webkit-text-stroke: thin;
 padding:2vh;
 }
