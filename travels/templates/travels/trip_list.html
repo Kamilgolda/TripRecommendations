@@ -6,7 +6,7 @@
 {% endblock css %}
 
 {% block content %}
-{% if user.is_authenticated and polling|length < 1 %}
+{% if user.is_authenticated and polling is None %}
 <div class="row">
   <div class="col-lg-12">
     <a class="btn btn-primary" href="{% url 'travels:polling' %}">Prosimy o wypełnienie krótkiej
