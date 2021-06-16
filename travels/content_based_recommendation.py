@@ -1,10 +1,11 @@
 import numpy as np
 import pandas as pd
+from travels.test import Test
 
 
 def get_result(trip_name):
-    full_path = "travels/management/files/V2csv.csv"
-    df = pd.read_csv(full_path, delimiter=',')
+    # full_path = "travels/management/files/V2csv.csv"
+    df = Test.content_based_recommendation_df
 
     trip_id = df[df.title == trip_name]["id"].values[0]
     # trip_cluster = self.df[self.df.title == trip_name]["cluster"].values[0]

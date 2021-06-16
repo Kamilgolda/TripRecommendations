@@ -1,88 +1,49 @@
-import os
-
-from django.contrib.auth import get_user_model
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Trip, TripPicture, TripDates, Polling, TripReservation
 from django.views.generic.edit import CreateView
 from .forms import TripReservationForm, PollingForm
 from django.views.generic.list import ListView
-from django.views.generic import DetailView, FormView
+from django.views.generic import DetailView
 from django.views.generic.edit import FormMixin
 from django.urls import reverse_lazy
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
-import pandas as pd
 import travels.content_based_recommendation as cbr
-from django.db.models import Count
+from travels.test import Test
+import travels.memory_based_collaborative_filtering as mbcf
 
 
 class SelectedForYouListView(ListView):
     model = Trip
     template_name = 'travels/trip_list.html'
-    paginate_by = 10
+    paginate_by = 12
     context_object_name = "trips"
+    ankieta = None
 
     def get_context_data(self, **kwargs):
         context = super(SelectedForYouListView, self).get_context_data(**kwargs)
-        context['pictures'] = TripPicture.objects.all().filter(default=True)
+        context['pictures'] = TripPicture.objects.all().filter(default=True, trip__in=self.get_queryset()[:50])
         if self.request.user.is_authenticated:
-            context['polling'] = Polling.objects.filter(user=self.request.user)[:1]
+            context['polling'] = self.ankieta
         return context
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            user_reservations = TripReservation.objects.filter(user=self.request.user)
+            user_reservations = TripReservation.manager_objects.user_reservations(self.request.user)
             result_set = set()
             for reservation in user_reservations:
                 try:
                     result_set.update(cbr.get_result(reservation.trip.title))
                 except IndexError:
-                    print("Brak wycieczki w V2.csv.csv")
+                    print("Brak wycieczki w V2csv.csv")
                 except Exception:
                     print("Error")
-
-            ankieta = Polling.objects.filter(user=self.request.user)[:1]
-            if len(ankieta) > 0:
-                ankieta = ankieta[0]
-                if ankieta.preferred_place == 'Tylko po Polsce':
-                    query = Trip.objects.filter(country="Polska",
-                                                type=ankieta.preferred_type,
-                                                transport=ankieta.preferred_transport,
-                                                landscape=ankieta.preferred_landscape
-                                                )
-                    if len(query) < 5:
-                        query = Trip.objects.filter(country="Polska",
-                                                    type=ankieta.preferred_type,
-                                                    transport=ankieta.preferred_transport
-                                                    )
-
-                if ankieta.preferred_place == 'Tylko za granicą':
-                    query = Trip.objects.filter(type=ankieta.preferred_type,
-                                                transport=ankieta.preferred_transport,
-                                                landscape=ankieta.preferred_landscape
-                                                ).exclude(country="Polska")
-                    if len(query) < 5:
-                        query = Trip.objects.filter(type=ankieta.preferred_type,
-                                                    transport=ankieta.preferred_transport
-                                                    ).exclude(country="Polska")
-
-                if ankieta.preferred_place == 'Po Polsce oraz za granicą':
-                    query = Trip.objects.filter(type=ankieta.preferred_type,
-                                                transport=ankieta.preferred_transport,
-                                                landscape=ankieta.preferred_landscape)
-                    if len(query) < 5:
-                        query = Trip.objects.filter(type=ankieta.preferred_type,
-                                                    transport=ankieta.preferred_transport
-                                                    )
-
-                for trip in query:
-                    if result_set.__contains__(trip.title):
-                        pass
-                    else:
+            self.ankieta = Polling.objects.filter(user=self.request.user).last()
+            if self.ankieta is not None:
+                polling_query = Test.get_polling_query(self.ankieta)
+                for trip in polling_query:
+                    if not result_set.__contains__(trip.title):
                         result_set.add(trip.title)
-
             query = Trip.objects.filter(title__in=result_set).order_by('-rating')
             return query
 
@@ -91,63 +52,38 @@ class SelectedForYouListView(ListView):
 
 class PopularListView(ListView):
     model = Trip
-    paginate_by = 10
+    paginate_by = 12
     context_object_name = "trips"
+    template_name = "travels/trip_list.html"
 
     def get_context_data(self, **kwargs):
         context = super(PopularListView, self).get_context_data(**kwargs)
-        context['pictures'] = TripPicture.objects.all().filter(default=True)
+        context['pictures'] = TripPicture.objects.all().filter(default=True, trip__in=self.get_queryset()[:50])
         if self.request.user.is_authenticated:
-            context['polling'] = Polling.objects.filter(user=self.request.user)[:1]
+            context['polling'] = Polling.objects.filter(user=self.request.user).last()
         return context
 
     def get_queryset(self):
-        count_reservations = TripReservation.objects.annotate(count=Count('trip')).order_by('count')[:50]
-        result_set = set()
-        for reservation in count_reservations:
-            result_set.add(reservation.trip.pk)
-        query = Trip.objects.filter(pk__in=result_set)
-        return query
+        return Test.popular
 
 
 class OthersChooseListView(ListView):
     model = Trip
-    paginate_by = 10
+    paginate_by = 12
     context_object_name = "trips"
 
     def get_context_data(self, **kwargs):
         context = super(OthersChooseListView, self).get_context_data(**kwargs)
-        context['pictures'] = TripPicture.objects.all().filter(default=True)
+        context['pictures'] = TripPicture.objects.all().filter(default=True, trip__in=self.get_queryset()[:50])
         if self.request.user.is_authenticated:
-            context['polling'] = Polling.objects.filter(user=self.request.user)[:1]
+            context['polling'] = Polling.objects.filter(user=self.request.user).last()
         return context
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            user_reservations = TripReservation.objects.filter(user=self.request.user)
-            trips = set()
-            for reservation in user_reservations:
-                trips.add(reservation.trip.__str__())
-            recommended_travels_ids = set()
-            exists = os.path.isfile('travels/management/files/algorytm.xlsx')
-            if exists:
-                full_path = 'travels/management/files/algorytm.xlsx'
-                travels = pd.read_excel(full_path, sheet_name="Rekomendacje")
-                recommended_travels = set()
-                for trip in trips:
-                    for i in range(len(travels)):
-                        if travels[0][i] == trip:
-                            recommended_travels.add(travels[1][i])
-                recommended_travels.difference_update(trips)
-                all_trips = Trip.objects.all()
-                for trip in all_trips:
-                    if recommended_travels.__contains__(str(trip)):
-                        recommended_travels_ids.add(trip.pk)
-
-                query = Trip.objects.filter(pk__in=recommended_travels_ids).order_by('-rating')
-                return query
-
+            return mbcf.get_result(self.request.user)
         return Trip.objects.none()
+
 
 class TripDetailView(FormMixin, DetailView):
     model = Trip
@@ -156,7 +92,7 @@ class TripDetailView(FormMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(TripDetailView, self).get_context_data(**kwargs)
-        context['pictures'] = TripPicture.objects.filter(trip=context['trip'])
+        context['pictures'] = TripPicture.objects.all().filter(trip=context['trip'])
         context['dates'] = TripDates.objects.filter(trip=context['trip'])
         TripReservationForm.select_dates=self.get_data(context['dates'])
         context['form'] = self.form_class(initial={'user': self.request.user, 'trip': self.object})

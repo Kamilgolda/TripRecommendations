@@ -1,4 +1,6 @@
+from asgiref.sync import sync_to_async
 from django.db import models
+from django.db.models import Count
 from django.utils.translation import gettext_lazy as _
 from biuropodrozy.utils import generate_slug
 from django.urls import reverse
@@ -11,8 +13,23 @@ import datetime
 from datetime import date
 
 
+class TripManager(models.Manager):
+    def popular_trips(self):
+        count_reservations = TripReservation.objects.values('trip_id').annotate(count=Count('trip')).order_by('-count')
+        trips_ids = []
+        for reservation in count_reservations.iterator():
+            trips_ids.append(reservation["trip_id"])
+        non_sorted_result = super().get_queryset().filter(pk__in=trips_ids)
+        result = []
+        for trip_id in trips_ids:
+            result.append(non_sorted_result.get(id=trip_id))
+        return result
+
+
 class Trip(models.Model):
     """Trip model class"""
+    objects = models.Manager()
+    manager_objects = TripManager()
 
     class Climates(models.TextChoices):
         GORSKI = 'Górski', _('Górski')
@@ -127,9 +144,14 @@ class TripDates(models.Model):
     def __str__(self):
         return f"{self.trip} {self.start_date}___{self.end_date}"
 
+class ReservationManager(models.Manager):
+    def user_reservations(self, user):
+        return super().get_queryset().filter(user=user)
 
 class TripReservation(models.Model):
     """Reservation model class"""
+    objects = models.Manager()
+    manager_objects = ReservationManager()
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     trip = models.ForeignKey('Trip', on_delete=models.PROTECT)

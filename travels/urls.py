@@ -5,8 +5,8 @@ from travels.views import (SelectedForYouListView, TripDetailView, Questionnaire
 
 app_name = "travels"
 urlpatterns = [
-    path("", SelectedForYouListView.as_view(), name="selected_for_you"),
-    path("popular", PopularListView.as_view(), name="popular"),
+    path("", PopularListView.as_view(), name="popular"),
+    path("selectedforyou", SelectedForYouListView.as_view(), name="selected_for_you"),
     path("otherschoose", OthersChooseListView.as_view(), name="otherschoose"),
     path("polling", QuestionnaireView.as_view(), name="polling"),
     path("<str:slug>/", TripDetailView.as_view(), name="details"),
