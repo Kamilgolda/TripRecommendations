@@ -1,12 +1,16 @@
 import requests
 import datetime
+from tenacity import retry, stop_after_attempt
+
+
+@retry(stop=stop_after_attempt(3))
+def fetch(url):
+    return requests.get(url)
 
 
 def get_weather(city_name):
-    """Fetch joke from joke API"""
-    response = requests.get(f"https://goweather.herokuapp.com/weather/{city_name}")
-    weather = response.json()
-
+    """Fetch weather from weather API"""
+    response = fetch(f"https://goweather.herokuapp.com/weather/{city_name}")
     weekdays = ("Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela")
     today = datetime.datetime.now()
     next1day = today + datetime.timedelta(days=1)
@@ -16,12 +20,19 @@ def get_weather(city_name):
     next1day = weekdays[next1day.weekday()]
     next2day = weekdays[next2day.weekday()]
     next3day = weekdays[next3day.weekday()]
-
-    temp_today = f"{weather['temperature']}"
-    desc_today = f"{weather['description']}"
-    temp_next1day = f"{weather['forecast'][0]['temperature']}"
-    temp_next2day = f"{weather['forecast'][1]['temperature']}"
-    temp_next3day = f"{weather['forecast'][2]['temperature']}"
+    if response.ok:
+        weather = response.json()
+        temp_today = f"{weather['temperature']}"
+        desc_today = f"{weather['description']}"
+        temp_next1day = f"{weather['forecast'][0]['temperature']}"
+        temp_next2day = f"{weather['forecast'][1]['temperature']}"
+        temp_next3day = f"{weather['forecast'][2]['temperature']}"
+    else:
+        temp_today = ""
+        desc_today = ""
+        temp_next1day = ""
+        temp_next2day = ""
+        temp_next3day = ""
     return {"today_name": today,
             "next1day_name": next1day,
             "next2day_name": next2day,

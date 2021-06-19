@@ -1,9 +1,15 @@
 import requests
+from tenacity import retry, stop_after_attempt
+
+
+@retry(stop=stop_after_attempt(3))
+def fetch(url):
+    return requests.get(url)
 
 
 def get_rate_in_pln(currency):
     """Fetch rate in PLN from currency exchanges api"""
-    response = requests.get(f"https://api.frankfurter.app/latest?from={currency}&to=PLN")
+    response = fetch(f"https://api.frankfurter.app/latest?from={currency}&to=PLN")
     if response.ok:
         rate = response.json()
         rate = rate['rates']['PLN']
@@ -15,13 +21,15 @@ def get_rate_in_pln(currency):
 def get_all_rates():
     """Fetch rates in PLN from currency exchanges api"""
 
-    response = requests.get(f"https://api.frankfurter.app/latest?from=PLN")
-    rates = response.json()
-    rates = rates['rates']
+    response = fetch(f"https://api.frankfurter.app/latest?from=PLN")
     dict_keys = {}
-    for key in rates.keys():
-        dict_keys[key]=get_rate_in_pln(key)['rate_in_pln']
+    if response.ok:
+        rates = response.json()
+        rates = rates['rates']
+        for key in rates.keys():
+            dict_keys[key]=get_rate_in_pln(key)['rate_in_pln']
     return dict_keys
+
 
 '''@property - model
 def results(self):
