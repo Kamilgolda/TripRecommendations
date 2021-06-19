@@ -12,23 +12,20 @@ var all_inclusive = document.getElementById("id_all_inclusive")
     room.oninput = getPrice;
     all_inclusive.oninput = getPrice;
 
-getPrice();
-
-
 function getPrice()
 {
-    var result= parseInt(persons.value) * parseInt(price_key)
+    var result= parseInt(persons.value) * parseInt(price_key);
     if(guide.checked)
-        result += 700
+        result += 700;
 
     if(room.checked)
-        result += 400
+        result += 400;
 
     if(all_inclusive.checked)
-        result += 500
+        result += 500;
 
     if(isNaN(result))
-        result = 0
+        result = 0;
 
-    price.innerText = result
+    price.innerHTML= "<strong>Koszt:" +result +"zł </strong>";
 }

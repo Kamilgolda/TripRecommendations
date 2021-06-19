@@ -158,9 +158,9 @@ class TripReservation(models.Model):
     date = models.ForeignKey("TripDates", on_delete=models.PROTECT, verbose_name="Wybierz termin")
     persons = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], verbose_name="Ilość osób")
     phone = models.CharField(max_length=12, verbose_name="Numer kontaktowy")
-    guide = models.BooleanField(default=0, verbose_name="Prywatny przewodnik")
-    room = models.BooleanField(default=0, verbose_name="Pokój premium")
-    all_inclusive = models.BooleanField(default=0, verbose_name="All inclusive")
+    guide = models.BooleanField(default=0, verbose_name="Prywatny przewodnik (700zł)")
+    room = models.BooleanField(default=0, verbose_name="Pokój premium (400zł)")
+    all_inclusive = models.BooleanField(default=0, verbose_name="All inclusive (500zł)")
     price = models.DecimalField(blank=True, max_digits=8, decimal_places=2, verbose_name="Cena wycieczki")
 
     def save(self, *args, **kwargs):

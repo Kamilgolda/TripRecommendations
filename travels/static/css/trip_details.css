@@ -1,93 +1,25 @@
-.detailscontainer{
-    padding-bottom: 200px;
-    width: 100%;
-}
-.details{
-    display: flex;
-    justify-content: center;
-    flex-flow: row wrap;
-    padding-top: 30px;
-    padding-bottom: 115px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 95%;
-    background-color: rgba(255, 255, 255,0.5);
-    border-radius: 60px;
-    position: relative;
-    top: 20px;
-}
-.leftside{
-display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column wrap;
-    margin-left: auto;
-    margin-right: auto;
-}
-.rightside{
-display: flex;
-    align-items: center;
-    flex-flow: column nowrap;
-    margin-left: auto;
-    margin-right: auto;
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;700&display=swap');
+
+#tcontainer{
+background-color: rgba(255, 255, 255,0.7);
+font-family: 'Barlow Condensed', sans-serif;
 }
 
-.imgdet{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    margin-bottom: 30px;
-    max-width:50vw;
-}
-.imgdet img{
-    max-width: 350px;
-    margin-top: 30px;
-    border-radius: 25px;
-}
-
-.weather{
-width:100%;
+.left_side{
+max-width:55vw;
 text-align:center;
 }
 
-.exchanges{
-width:100%;
+.left_side .title{
 text-align:center;
-margin-top:2%;
 }
 
-.covid{
-width:100%;
-text-align:center;
-margin-top:2%;
-}
-
-.reservation{
-width:100%;
-margin-top:2%;
+.left_side img{
+max-width:400px;
+min-width:100px;
+height: auto;
 }
 
 .descriptions{
-max-width:50vw;
+text-align:left;
 }
-
-/***********************************************************/
-#reservation{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column;
-    margin-right:3%;
-    background-color: rgba(255, 255, 255,0.5);
-    border-radius: 60px;
-    position: relative;
-    float: left;
-    top: 100px;
-    padding: 20px 20px 10px;
-    width: 100%;
-}
-.buttonHolder{
-  text-align: center;
-  margin-bottom: 2vh;
-}
-

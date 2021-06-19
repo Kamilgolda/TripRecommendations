@@ -7,17 +7,15 @@
 
 {% block content %}
 
-<div class="detailscontainer">
-  <div class="details">
-    <div class="leftside">
+  <div class="d-flex justify-content-evenly flex-wrap p-4 m-4 rounded" id="tcontainer">
+    <div class="flex-fill left_side">
       <h1 class="title">{{ trip.title }}</h1>
-      <div class="imgdet">
         {% for picture in pictures %}
         {% if picture.trip == trip %}
-        <img src="{{ picture.picture_url }}">
+        <img class="rounded" src="{{ picture.picture_url }}">
         {% endif %}
         {% endfor %}
-      </div>
+      <hr>
       <h2>{{ trip.city }}</h2>
       {% if trip.rating != None %}
         <h2>Ocena: {{ trip.rating }}/6</h2>
@@ -26,6 +24,8 @@
         <h2>Gwiazdki hotelowe: {{trip.hotelstars}}</h2>
       {% endif %}
       <h2>Czas trwania: {{ trip.duration }} dni</h2>
+      <h2 style="text-align:right;"><strong>Cena od <span id="tripPrice">{{ trip.price }} </span> zł/os</strong></h2>
+      <hr>
       <div class="descriptions">
         <h6>{{ trip.head_description|linebreaks }}</h6>
 
@@ -74,9 +74,8 @@
         <h6>{{ trip.benefits_description|linebreaks }}</h6>
         {% endif %}
         </div>
-      <h2> Cena od <span id="tripPrice">{{ trip.price }} </span> zł/os </h2>
     </div>
-    <div class="rightside">
+    <div class="flex-fill pl-5">
       {% if trip.countryEN != "" %}
       <div class="weather">
         <h2>Pogoda:</h2>
@@ -86,7 +85,7 @@
         <h2>{{trip.weather_api.next3day_name}}: {{trip.weather_api.temp_next3day}}</h2>
       </div>
       {% endif %}
-
+      <hr>
       {% if trip.currency != 'PLN' or trip.currency != '' %}
       {% if trip.exchange_rates_api.rate_in_pln != '' %}
       <div class="exchanges">
@@ -94,13 +93,13 @@
       </div>
       {% endif %}
       {% endif %}
-
+      <hr>
       {% if trip.countryEN != "" %}
       <div class="covid">
       <h2>Aktualna liczba zachorowań na covid: {{trip.covid_api.today_covid}}</h2>
       </div>
       {% endif %}
-
+      <hr>
       <div id="reservation">
         {% if user.is_authenticated %}
         {% include 'travels/partials/reservation_form.html' %}
@@ -111,7 +110,6 @@
 
     </div>
   </div>
-</div>
 
 {% endblock content %}
 
