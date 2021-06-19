@@ -61,7 +61,7 @@ class PollingForm(ModelForm):
             ),
             "user",
             ),
-            ButtonHolder(Submit("submit", "Wyślij", css_class="button white")),
+            ButtonHolder(Submit("submit", "Wyślij", css_class="btn btn-primary btn-lg")),
         )
 
     class Meta:
