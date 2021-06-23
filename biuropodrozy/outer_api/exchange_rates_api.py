@@ -9,12 +9,12 @@ def fetch(url):
 
 def get_rate_in_pln(currency):
     """Fetch rate in PLN from currency exchanges api"""
-    response = fetch(f"https://api.frankfurter.app/latest?from={currency}&to=PLN")
-    if response.ok:
-        rate = response.json()
-        rate = rate['rates']['PLN']
-    else:
-        rate = ""
+    rate = ""
+    if currency != "PLN":
+        response = fetch(f"https://api.frankfurter.app/latest?from={currency}&to=PLN")
+        if response.ok:
+            rate = response.json()
+            rate = rate['rates']['PLN']
     return {'rate_in_pln': rate}
 
 

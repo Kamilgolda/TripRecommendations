@@ -3,10 +3,10 @@ import pandas as pd
 from django.core.management import call_command
 
 
-class Test:
+class Helper:
     popular = Trip.manager_objects.popular_trips()
     content_based_recommendation_df = pd.read_csv("travels/management/files/V2csv.csv", delimiter=',')
-    generating_xlsx_mbcf = call_command("memory_based_collaborative_filtering")
+    #generating_xlsx_mbcf = call_command("memory_based_collaborative_filtering")
     @staticmethod
     def get_polling_query(ankieta):
         if ankieta.preferred_place == 'Tylko po Polsce':

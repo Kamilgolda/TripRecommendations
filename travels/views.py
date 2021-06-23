@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 import travels.content_based_recommendation as cbr
-from travels.test import Test
+from travels.helper import Helper
 import travels.memory_based_collaborative_filtering as mbcf
 
 
@@ -40,7 +40,7 @@ class SelectedForYouListView(ListView):
                     print("Error")
             self.ankieta = Polling.objects.filter(user=self.request.user).last()
             if self.ankieta is not None:
-                polling_query = Test.get_polling_query(self.ankieta)
+                polling_query = Helper.get_polling_query(self.ankieta)
                 for trip in polling_query:
                     if not result_set.__contains__(trip.title):
                         result_set.add(trip.title)
@@ -64,7 +64,7 @@ class PopularListView(ListView):
         return context
 
     def get_queryset(self):
-        return Test.popular
+        return Helper.popular
 
 
 class OthersChooseListView(ListView):
