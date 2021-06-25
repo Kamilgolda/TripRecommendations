@@ -4,11 +4,28 @@ from tenacity import retry, stop_after_attempt
 
 @retry(stop=stop_after_attempt(3))
 def fetch(url):
+    """
+    Pobranie adresu URl
+
+    Args:
+        url (string): adres url
+
+    Returns:
+        object: requests
+    """
     return requests.get(url)
 
 
 def get_covid(country):
-    """Fetch covid cases from covid API"""
+    """Fetch covid cases from covid API
+
+    Args:
+        country (string): nazwa kraju
+
+    Returns:
+        object: Zwraca słownik z zarazeniami w podanym kraju
+
+    """
     response = fetch(f"https://api.covid19api.com/live/country/{country}/status/confirmed")
     if response.ok:
         covid = response.json()

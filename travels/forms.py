@@ -7,10 +7,16 @@ from django import forms
 
 
 class TripReservationForm(ModelForm):
+    """
+    Klasa reprezentująca formularz rezerwacji
+    """
 
     select_dates = []
 
     def __init__(self, *args, **kwargs):
+        """
+        Metoda odpowiadająca za inicjalizację pól
+        """
         super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)
         self.helper.form_tag = True
@@ -33,13 +39,21 @@ class TripReservationForm(ModelForm):
         )
 
     class Meta:
+        """
+            Przypisanie modelu rezerwacji i potrzebnych pól
+        """
         model = TripReservation
         fields = '__all__'
 
 
 class PollingForm(ModelForm):
-
+    """
+        Klasa reprezentująca formularz ankiety
+    """
     def __init__(self, *args, **kwargs):
+        """
+            Metoda odpowiadająca za inicjalizację pól
+        """
         super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)
         self.helper.form_tag = True
@@ -65,5 +79,8 @@ class PollingForm(ModelForm):
         )
 
     class Meta:
+        """
+            Przypisanie modelu rezerwacji i potrzebnych pól
+        """
         model = Polling
         fields = '__all__'

@@ -10,12 +10,24 @@ from travels.models import Trip
 
 
 class Command(BaseCommand):
+    """
+    Klasa do tworzenia wycieczek
+    """
     help = "Creating trips"
 
     full_path = 'travels/management/files/Wycieczki.xlsx'
     trips = pd.read_excel(full_path, sheet_name='Zwiedzanie')
 
     def handle(self, *args, **options):
+        """
+        Metoda do tworzenia wycieczek z exela
+        Args:
+            *args ():
+            **options ():
+
+        Returns:
+            object: Trip
+        """
         for i in range(len(self.trips)):
             _, created = Trip.objects.get_or_create(title=self.trips["Nazwa wycieczki"][i],
                                                     # hotelstars=self.trips["Gwiazdki hotelu"][i],

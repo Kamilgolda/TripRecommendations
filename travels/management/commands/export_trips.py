@@ -4,6 +4,9 @@ from travels.models import Trip, TripReservation
 
 
 class Command(BaseCommand):
+    """
+    Tworzenie pól dla wycieczki, eksportwoanie wycieczek do exela
+    """
     help = "Creating fields in Trips"
 
     trips = Trip.objects.all()
@@ -36,6 +39,15 @@ class Command(BaseCommand):
     full_path = 'travels/management/files/export_trips.xlsx'
 
     def handle(self, *args, **options):
+        """
+        Metoda zwraca wycieczki do pliku exela
+        Args:
+            *args ():
+            **options ():
+
+        Returns:
+            object: plik exela z wycieczkami
+        """
         for trip in self.trips:
             self.trips_dict["title"].append(trip.title)
             self.trips_dict["hotelstars"].append(trip.hotelstars)

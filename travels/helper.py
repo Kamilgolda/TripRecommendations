@@ -4,11 +4,22 @@ from django.core.management import call_command
 
 
 class Helper:
+    """
+    Klasa odpowiadająca za wycieczki rekomendowane i proponowane z ankiety
+    """
     popular = Trip.manager_objects.popular_trips()
     content_based_recommendation_df = pd.read_csv("travels/management/files/V2csv.csv", delimiter=',')
     #generating_xlsx_mbcf = call_command("memory_based_collaborative_filtering")
     @staticmethod
     def get_polling_query(ankieta):
+        """
+        Metoda odpowiadająca za określenie wycieczek w QuerySet z ankiety
+        Args:
+            ankieta:
+
+        Returns:
+            object: QuerySet
+        """
         if ankieta.preferred_place == 'Tylko po Polsce':
             query = Trip.objects.filter(country="Polska",
                                         type=ankieta.preferred_type,
