@@ -5,11 +5,27 @@ from tenacity import retry, stop_after_attempt
 
 @retry(stop=stop_after_attempt(3))
 def fetch(url):
+    """
+       Pobranie adresu URl
+
+       Args:
+           url (string): adres url
+
+       Returns:
+           object: requests
+       """
     return requests.get(url)
 
 
 def get_weather(city_name):
-    """Fetch weather from weather API"""
+    """Fetch weather from weather API
+
+    Args:
+        city_name (string): nazwa miasta
+
+    Returns:
+        object: słownik z pogąda na dane dni tygodnia
+    """
     response = fetch(f"https://goweather.herokuapp.com/weather/{city_name}")
     weekdays = ("Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela")
     today = datetime.datetime.now()

@@ -9,6 +9,9 @@ import random
 
 
 class Command(BaseCommand):
+    """
+    Klasa do tworzenia nowych rezerwacji
+    """
     help = "Creating Reservations"
 
     dates = TripDates.objects.all()
@@ -18,6 +21,12 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **options):
+        """
+        Tworzy rezerwacje wycieczek z losowymi polami dla losowych wycieczek
+        Args:
+            *args ():
+            **options ():
+        """
         for idx, user in enumerate(self.my_users):
             quantity = random.randint(1, 5)
             list_random_dates = []

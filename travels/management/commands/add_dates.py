@@ -8,11 +8,23 @@ import random
 
 
 class Command(BaseCommand):
+    """
+     Klasa do tworzenia dat wycieczek
+    """
     help = "Creating Trips Dates"
 
     trips = Trip.objects.all()
 
     def handle(self, *args, **options):
+        """
+            Tworzenie daty wycieczki
+        Args:
+            *args ():
+            **options ():
+
+        Returns:
+            object: TripDates
+        """
         for trip in self.trips:
             terms = TripDates.objects.all().filter(trip=trip)
             no = len(terms)

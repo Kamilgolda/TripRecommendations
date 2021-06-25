@@ -9,6 +9,9 @@ import decimal
 import numpy
 
 class Command(BaseCommand):
+    """
+    Importowanie rezerwacji wycieczek ze sciezki:  travels/management/files/export_trips.xlsx
+    """
     help = "Importing trip reservations from travels/management/files/export_trips.xlsx"
 
     full_path = 'travels/management/files/export_trips.xlsx'
@@ -17,6 +20,15 @@ class Command(BaseCommand):
     dates = TripDates.objects.all()
 
     def handle(self, *args, **options):
+        """
+        Metoda do importowania rezerwacji wycieczek
+        Args:
+            *args ():
+            **options ():
+
+        Returns:
+
+        """
         for i in range(len(self.reservations)):
             ftrip = None
             fdate = None

@@ -8,11 +8,20 @@ import random
 
 
 class Command(BaseCommand):
+    """
+    Klasa do tworzenia typów wycieczek
+    """
     help = "Creating fields in Trips"
 
     trips = Trip.objects.all().filter(country="Wyspy Zielonego Przylądka")
 
     def handle(self, *args, **options):
+        """
+        Metoda do tworzenia typów wycieczek
+        Args:
+            *args ():
+            **options ():
+        """
         for trip in self.trips:
             trip.countryEN = "United Arab Emirates"
             trip.currency = "CVE"

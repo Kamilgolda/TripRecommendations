@@ -4,11 +4,28 @@ from tenacity import retry, stop_after_attempt
 
 @retry(stop=stop_after_attempt(3))
 def fetch(url):
+    """
+       Pobranie adresu URl
+
+       Args:
+           url (string): adres url
+
+       Returns:
+           object: requests
+       """
     return requests.get(url)
 
 
 def get_rate_in_pln(currency):
-    """Fetch rate in PLN from currency exchanges api"""
+    """Fetch rate in PLN from currency exchanges api
+
+    Args:
+        currency (string): waluta do przeliczenia
+
+    Returns:
+        object: Słownik z podaną walutą na PLN
+
+    """
     rate = ""
     if currency != "PLN":
         response = fetch(f"https://api.frankfurter.app/latest?from={currency}&to=PLN")
@@ -19,7 +36,12 @@ def get_rate_in_pln(currency):
 
 
 def get_all_rates():
-    """Fetch rates in PLN from currency exchanges api"""
+    """Fetch rates in PLN from currency exchanges api
+
+    Returns:
+        object: Słownik z walutami na PLN
+
+    """
 
     response = fetch(f"https://api.frankfurter.app/latest?from=PLN")
     dict_keys = {}

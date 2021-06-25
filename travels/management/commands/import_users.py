@@ -6,12 +6,21 @@ import logging
 
 
 class Command(BaseCommand):
+    """
+        Tworzenie użytkowników ze pliku ściezka: travels/management/files/users.xlsx
+    """
     help = "Creating users accounts"
 
     full_path = 'travels/management/files/users.xlsx'
     users = pd.read_excel(full_path)
 
     def handle(self, *args, **options):
+        """
+        metoda odpowiadająca za importowanie użytkowników
+        Args:
+            *args ():
+            **options ():
+        """
         for i in range(len(self.users)):
             #_, created = User.objects.get_or_create(self.users["Username"][i], self.users["Email"][i], self.users["Password"][i])
             created = get_user_model().objects.create_user(self.users["Username"][i], self.users["Email"][i], self.users["Password"][i])
