@@ -6,7 +6,7 @@ from travels.helper import Helper
 def get_result(trip_name):
     # full_path = "travels/management/files/V2csv.csv"
     df = Helper.content_based_recommendation_df
-
+    print(trip_name)
     trip_id = df[df.title == trip_name]["id"].values[0]
     # trip_cluster = self.df[self.df.title == trip_name]["cluster"].values[0]
 
@@ -14,7 +14,7 @@ def get_result(trip_name):
     X2 = df
     X = X.drop(['title', 'climate', 'country', 'id', 'cluster'], axis=1)
 
-    y = df[df.title == trip_name]
+    y = df[df.title == trip_name].head(1)
     y = y.drop(['title', 'climate', 'country', 'id', 'cluster'], axis=1)
 
     X = X.values
@@ -25,4 +25,5 @@ def get_result(trip_name):
     result = set()
     for x in X3['title'][1:11]:
         result.add(x)
+    print(result)
     return result
