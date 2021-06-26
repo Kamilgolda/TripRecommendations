@@ -1,0 +1,6 @@
+.col-md-8, .offset-md-2{
+background-color: rgba(255, 255, 255,0.7);
+border-radius: 30px;
+padding:5%;
+margin-block: 5%;
+}

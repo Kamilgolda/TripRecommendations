@@ -1,0 +1,310 @@
+﻿id;title;hotelstars;timezone;price;duration;climate;country;countryId;temperatura;landscape;type;transport
+0;Hotel Istion Club & Spa;5;2;2229;4;Śródziemnomorski;Grecja;15;31;2;1;3
+1;Hotel Aristoteles Holiday Resort & Spa;4;2;1869;6;Śródziemnomorski;Grecja;15;31;2;1;3
+2;Hotel Azure Resort & Spa;5;2;2249;7;Śródziemnomorski;Grecja;15;31;2;1;3
+3;Hotel Kakkos Beach;5;2;3299;8;Śródziemnomorski;Grecja;15;31;2;1;3
+4;Hotel Odysee Resort;4;1;2199;8;Śródziemnomorski;Tunezja;22;33;2;1;3
+5;Hotel Occidental Cala Viñas;4;1;2639;8;Kontynentalny;Hiszpania;14;32;2;1;3
+6;Hotel Gala Tenerife;4;1;2479;4;Kontynentalny;Hiszpania;14;32;2;1;3
+7;Hotel Sheraton Fuerteventura Beach;5;1;3599;8;Kontynentalny;Hiszpania;14;32;2;1;3
+8;Hotel Barceló Santiago;4;1;2819;4;Kontynentalny;Hiszpania;14;32;2;1;3
+9;Hotel Salalah Rotana Resort;5;4;4399;8;Kontynentalny;Oman;26;35;2;1;3
+10;Anitas Beach;3;3;2067;8;Kontynentalny;Turcja;16;31;2;1;3
+11;Hotel Alvin Comfort;4;1;1689;8;Śródziemnomorski;Albania;17;29;2;1;3
+12;Hotel Astera & Spa;4;2;929;8;Kontynentalny;Bułgaria;9;30;2;1;3
+13;Apartments Polynesia Plava Laguna;3;1;1329;6;Śródziemnomorski;Chorwacja;12;30;2;1;3
+14;Apartments Danex Aida;4;1;1339;6;Śródziemnomorski;Chorwacja;12;30;2;1;3
+15;Hotel Coral Beach & Resort;5;2;3279;8;Śródziemnomorski;Cypr;18;32;2;1;3
+16;Hotel Jaz Lamaya Resort;5;2;2979;8;Śródziemnomorski;Egipt;21;28;2;1;3
+17;Hotel Yasmin Resort;5;3;2189;8;Kontynentalny;Turcja;16;31;2;1;3
+18;Hotel Trendy Aspendos Beach;5;3;2309;6;Kontynentalny;Turcja;16;31;2;1;3
+19;Aquaworld Belek By MP Hotels;5;3;1893;5;Kontynentalny;Turcja;16;31;2;1;3
+20;Aska Lara;5;3;2036;6;Kontynentalny;Turcja;16;31;2;1;3
+21;Turunc Resort;5;3;2321;6;Kontynentalny;Turcja;16;31;2;1;3
+22;Sealight Family Club;4;3;2558;9;Kontynentalny;Turcja;16;31;2;1;3
+23;Sealight Resort Kudasi;5;3;2683;8;Kontynentalny;Turcja;16;31;2;1;3
+24;Sunrise Resort Hotel;5;3;2909;8;Kontynentalny;Turcja;16;31;2;1;3
+25;Starlight Resort Hotel;5;3;2993;8;Kontynentalny;Turcja;16;31;2;1;3
+26;Labranda Ephesus Princess;5;3;3254;10;Kontynentalny;Turcja;16;31;2;1;3
+27;Miarosa Ghazal Resort;5;3;3414;10;Kontynentalny;Turcja;16;31;2;1;3
+28;Kairama Bodrum Imperial;5;3;3716;10;Kontynentalny;Turcja;16;31;2;1;3
+29;Riviera Hotel and Spa;4;3;1286;5;Kontynentalny;Turcja;16;31;2;1;3
+30;Asia Beach Resort Hotel;5;3;1381;5;Kontynentalny;Turcja;16;31;2;1;3
+31;Grand Seker Hotel;4;3;1392;6;Kontynentalny;Turcja;16;31;2;1;3
+32;Michell Hotel and Spa;5;3;1449;6;Kontynentalny;Turcja;16;31;2;1;3
+33;Sea Planet Resort and Spa;5;3;1466;6;Kontynentalny;Turcja;16;31;2;1;3
+34;Hotel Casteldoria Mare;4;1;3029;8;Śródziemnomorski;Włochy;13;27;2;1;3
+35;Hotel Santo Stefano Clubviaggi;4;1;2599;8;Śródziemnomorski;Włochy;13;27;2;1;3
+36;Hotel Santa Caterina Village Resort & Spa;4;1;2279;8;Śródziemnomorski;Włochy;13;27;2;1;3
+37;Hotel Kakkos Bay;4;2;2699;8;Śródziemnomorski;Grecja;15;31;2;1;3
+38;Hotel Solimar White Pearl;5;3;3049;8;Śródziemnomorski;Grecja;15;31;3;1;3
+39;Hotel Rodos Palace Luxury Convention Resort;5;3;3849;15;Śródziemnomorski;Grecja;15;31;3;1;3
+40;Odkryj Symi;3;2;2290;12;Śródziemnomorski;Grecja;15;31;4;2;3
+41;Hotel Occidental Margaritas;4;2;7879;15;Kontynentalny;Hiszpania;14;32;2;1;3
+42;Hotel Occidental Margaritas;4;2;3689;8;Kontynentalny;Hiszpania;14;32;2;1;3
+43;Hotel Be Live Collection Palace De Muro;5;1;4069;8;Kontynentalny;Hiszpania;14;32;2;1;3
+44;Hotel Pine Bay;5;2;3019;8;Kontynentalny;Turcja;16;31;3;3;3
+45;Hotel Xanadu Island;5;3;4689;8;Kontynentalny;Turcja;16;31;2;1;3
+46;Hotel Sirios Village;4;3;2649;8;Śródziemnomorski;Grecja;15;31;3;1;3
+47;Kotva;4;2;1005;4;Kontynentalny;Bułgaria;9;30;2;1;3
+48;Kleopatra Atlas;4;3;1562;7;Kontynentalny;Turcja;16;31;2;1;3
+49;Tiana Beach Resort;3;3;1589;8;Kontynentalny;Turcja;16;31;2;1;3
+50;Bitez Garden Life;4;3;1926;8;Kontynentalny;Turcja;16;31;2;1;3
+51;Breeze Beach Bodrum;4;3;1934;8;Kontynentalny;Turcja;16;31;2;1;3
+52;Wegry i Balaton;3;1;1673;6;Kontynentalny;Węgry;8;28;9;2;2
+53;Hotel Royalton Cayo Santa Maria;5;5;6749;8;Kontynentalny;Kuba;30;32;2;1;3
+54;Glarus;3;2;1271;6;Kontynentalny;Bułgaria;9;30;2;1;3
+55;Yavor Palace;4;2;1014;4;Kontynentalny;Bułgaria;9;30;2;1;3
+56;Detelina;3;2;1050;5;Kontynentalny;Bułgaria;9;30;2;1;3
+57;Zefir;3;2;1085;5;Kontynentalny;Bułgaria;9;30;2;1;3
+58;Diamond;4;2;1091;4;Kontynentalny;Bułgaria;9;30;2;1;3
+59;Iskar;3;2;1237;6;Kontynentalny;Bułgaria;9;30;2;1;3
+60;Mena Palace;4;2;1272;5;Kontynentalny;Bułgaria;9;30;2;1;3
+61;Calypso;3;2;1276;6;Kontynentalny;Bułgaria;9;30;2;1;3
+62;Aphrodite;4;2;1331;5;Kontynentalny;Bułgaria;9;30;2;1;3
+63;Park Hotel Golden Beach;4;2;1421;5;Kontynentalny;Bułgaria;9;30;2;1;3
+64;Avliga Beach;3;2;1451;6;Kontynentalny;Bułgaria;9;30;2;1;3
+65;Slavey;4;2;1651;6;Kontynentalny;Bułgaria;9;30;2;1;3
+66;Berlin Green Park;4;2;1624;6;Kontynentalny;Bułgaria;9;30;2;1;3
+67;Festa Panorama;4;2;1687;6;Kontynentalny;Bułgaria;9;30;2;1;3
+68;Royal Park;4;2;1721;7;Kontynentalny;Bułgaria;9;30;2;1;3
+69;Kristal;4;2;1735;7;Kontynentalny;Bułgaria;9;30;2;1;3
+70;Berlin Golden Beach;4;2;1826;7;Kontynentalny;Bułgaria;9;30;2;1;3
+71;Amfibia;3;2;1917;9;Kontynentalny;Bułgaria;9;30;2;1;3
+72;Pensee Royal Garden Beach Resort;3;2;1723;7;Śródziemnomorski;Egipt;21;28;1;1;3
+73;Sol Y Mare Reef Marsa;4;2;1794;6;Śródziemnomorski;Egipt;21;28;1;1;3
+74;Magic Tulip Beach Resort;4;2;1825;6;Śródziemnomorski;Egipt;21;28;1;1;3
+75;Zakochani w karnawale;3;2;1398;7;Śródziemnomorski;Włochy;13;27;9;2;2
+76;Hotel Villa Trunka Lunka;3;1;1689;8;Śródziemnomorski;Włochy;13;27;7;3;3
+77;Hotel Muhlener Hof;4;1;1389;6;Śródziemnomorski;Włochy;13;27;7;3;3
+78;Hotel Villa Emma;3;1;829;5;Śródziemnomorski;Włochy;13;27;7;3;3
+79;Gawędy o Wenecji;3;1;1298;7;Śródziemnomorski;Włochy;13;27;9;2;3
+80;Wloskie wakacje;3;1;1740;6;Śródziemnomorski;Włochy;13;27;8;2;2
+81;Hotel Royal Island Resort & Spa;5;5;6299;8;Morski;Malediwy;28;30;2;1;3
+82;Hotel Meliá Sunny Beach;5;3;4539;12;Kontynentalny;Bułgaria;9;30;3;1;1
+83;Hotel Meliá Sunny Beach;5;3;5889;15;Kontynentalny;Bułgaria;9;30;3;1;1
+84;Three Corners  Fayrouz Plaza;5;2;1908;5;Śródziemnomorski;Egipt;21;28;1;1;3
+85;Onatti Beach Resort;4;2;1958;6;Śródziemnomorski;Egipt;21;28;1;1;3
+86;Falcon Naama Star;3;2;2008;8;Śródziemnomorski;Egipt;21;28;1;1;3
+87;Club Calimera Akassia Swiss Resort;5;2;2026;5;Śródziemnomorski;Egipt;21;28;1;1;3
+88;Herbaciane tygrysy na Malediwach;3;5;8450;13;Morski;Malediwy;28;30;3;2;3
+89;Wyspy Zielonego Przylądka;3;-1;4599;8;Morski;Wyspy Zielonego Przylądka;24;29;3;2;3
+90;Gramvoussa – z Rethymnonu;3;2;2309;12;Śródziemnomorski;Grecja;15;31;3;2;3
+91;King Tut Aqua  Park Beach Resort;4;2;2032;7;Śródziemnomorski;Egipt;21;28;1;1;3
+92;Sea Gull;4;2;2051;7;Śródziemnomorski;Egipt;21;28;1;1;3
+93;Golden Beach Resort;3;2;2055;7;Śródziemnomorski;Egipt;21;28;1;1;3
+94;Oriental Resort Aurora;4;2;2067;7;Śródziemnomorski;Egipt;21;28;1;1;3
+95;Elphistone Resort;4;2;2069;7;Śródziemnomorski;Egipt;21;28;1;1;3
+96;Centrum Wypoczynkowo – Konferencyjne Trzy Jeziora;3;1;579;5;Morski;Polska;1;22;2;1;1
+97;Hotel Tobaco;3;1;234;2;Morski;Polska;1;22;9;3;1
+98;Hotel Tobaco;3;1;694;4;Morski;Polska;1;22;9;3;1
+99;Przygoda z szejkiem;3;4;1799;4;Pustynny;Zjednoczone Emiraty Arabskie;25;42;1;2;3
+100;Centrum Wypoczynkowo – Konferencyjne Trzy Jeziora;3;1;149;2;Morski;Polska;1;22;2;1;1
+101;Hotel Future Dream Lagoon & Garden;5;2;2859;8;Śródziemnomorski;Egipt;21;28;2;3;3
+102;Sunny Days Resort & Aqua Park;4;2;2080;7;Śródziemnomorski;Egipt;21;28;1;1;3
+103;Hotel VidaMar Resort Madeira;5;1;8055;15;Śródziemnomorski;Portugalia;19;24;3;1;3
+104;Hotel Solimar White Pearl;5;3;5679;15;Śródziemnomorski;Grecja;15;31;3;1;3
+105;Hotel Heaven Beach Resort & Spa;5;2;2549;8;Kontynentalny;Turcja;16;31;3;3;3
+106;Hotel Rodos Palace Luxury Convention Resort;5;3;2499;8;Śródziemnomorski;Grecja;15;31;3;1;3
+107;Hotel Blue Dream Palace;5;3;3259;15;Śródziemnomorski;Grecja;15;31;3;1;3
+108;Hotel Blue Dream Palace;5;3;2229;8;Śródziemnomorski;Grecja;15;31;3;1;3
+109;Centrum Wypoczynkowo – Konferencyjne Trzy Jeziora;3;1;289;3;Morski;Polska;1;22;2;1;1
+110;Dom Uzdrowiskowy Ewa Medical & SPA;4;1;360;3;Morski;Polska;1;22;7;3;1
+111;Ośrodek Konferencyjno-Wypoczynkowy Ziemowit;3;1;492;4;Morski;Polska;1;22;7;1;1
+112;Hotel Andon Lapa;4;2;3479;15;Śródziemnomorski;Albania;17;29;3;1;3
+113;Hotel Sandy Beach Resort;4;2;2339;8;Śródziemnomorski;Albania;17;29;3;1;3
+114;Hotel Sandy Beach Resort;4;2;3699;15;Śródziemnomorski;Albania;17;29;3;1;3
+115;Bliss Marina Beach Resort;4;2;2150;8;Śródziemnomorski;Egipt;21;28;1;1;3
+116;Jaz Grand Marsa;5;2;2156;6;Śródziemnomorski;Egipt;21;28;1;1;3
+117;Ali Baba Palace;4;2;2162;8;Śródziemnomorski;Egipt;21;28;1;1;3
+118;Faraana Reef Resort;4;2;2172;8;Śródziemnomorski;Egipt;21;28;1;1;3
+119;Sea Star Beaurivage;4;2;2174;8;Śródziemnomorski;Egipt;21;28;1;1;3
+120;Bliss Abo Nawas Resort;4;2;2222;8;Śródziemnomorski;Egipt;21;28;1;1;3
+121;Aladdin Beach Resort;4;2;2332;8;Śródziemnomorski;Egipt;21;28;1;1;3
+122;Hotel Krynica;4;1;459;3;Morski;Polska;1;22;7;3;1
+123;Hotel Saint George Ski & Holiday;4;2;799;4;Kontynentalny;Bułgaria;9;30;7;3;1
+124;Aries Hotel & Spa Wisła;4;1;1059;4;Morski;Polska;1;22;7;3;1
+125;Hotel Evelina Palace;4;2;779;4;Kontynentalny;Bułgaria;9;30;7;3;1
+126;Mountain Romance Family Hotel & Spa;3;2;779;4;Kontynentalny;Bułgaria;9;30;7;3;1
+127;Hotel Malikia Resort Abu Dabbab;5;2;3419;11;Śródziemnomorski;Egipt;21;28;2;3;3
+128;Osada Górski Potok;4;1;560;5;Morski;Polska;1;22;7;1;1
+129;Ośrodek Konferencyjno-Wypoczynkowy Savoy;3;1;129;2;Morski;Polska;1;22;5;1;1
+130;Hotel Vienna House Easy Cracow;3;1;129;2;Morski;Polska;1;22;9;1;1
+131;Centrum Wypoczynkowo – Konferencyjne Trzy Jeziora;3;1;459;4;Morski;Polska;1;22;6;1;1
+132;Arche Hotel Lublin;3;1;299;3;Morski;Polska;1;22;9;1;1
+133;Dom Wczasowy Teresa;3;1;189;3;Morski;Polska;1;22;7;1;1
+134;Ośrodek Konferencyjno-Wypoczynkowy Hyrny;3;1;249;3;Morski;Polska;1;22;7;1;1
+135;Warmiński Hotel & Conference;3;1;279;3;Morski;Polska;1;22;9;1;1
+136;Hotel Cottonina Mineral Spa Resort;4;1;300;3;Morski;Polska;1;22;5;1;1
+137;Folwark Książęcy;3;1;310;3;Morski;Polska;1;22;5;1;1
+138;Hotel VidaMar Resort Madeira;5;1;4479;8;Śródziemnomorski;Portugalia;19;24;3;1;3
+139;Bożonarodzeniowe Jarmarki;3;2;828;3;Kontynentalny;Czechy;6;25;9;2;2
+140;Hotel Malikia Resort Abu Dabbab;5;2;4169;15;Śródziemnomorski;Egipt;21;28;2;3;3
+141;Hotel Fanar & Residences;5;4;4419;8;Kontynentalny;Oman;26;35;2;1;3
+142;Hotel Allegro Madeira;4;1;1749;4;Śródziemnomorski;Portugalia;19;24;2;1;3
+143;Zima w imperialnych stolicach;3;3;4479;8;Kontynentalny;Rosja;10;21;9;2;3
+144;Hotel Uroa Bay Beach Resort;4;3;3299;8;Kontynentalny;Tanzania;27;28;2;1;3
+145;Hotel Oasis Atlantico Belorizonte;5;-1;2799;8;Morski;Wyspy Zielonego Przylądka;24;29;2;1;3
+146;Hotel Hilton Marsa Alam Nubian Resort;5;2;2849;8;Śródziemnomorski;Egipt;21;28;2;1;3
+147;Hotel Fuerteventura Princess;4;1;3069;8;Kontynentalny;Hiszpania;14;32;2;1;3
+148;Hotel Centara Grand Beach Resort & Villas Krabi;5;7;5569;8;Monsunowy;Tajlandia;33;31;2;1;3
+149;Hotel Sea View Lodge;4;3;4669;8;Kontynentalny;Tanzania;27;28;2;1;3
+150;Hotel Vikingen Infinity Resort & Spa;5;3;2059;6;Kontynentalny;Turcja;16;31;2;1;3
+151;Kassandra Palace Hotel & Spa;5;2;2749;6;Śródziemnomorski;Grecja;15;31;2;1;3
+152;Hotel Taoro Garden;4;1;2199;8;Kontynentalny;Hiszpania;14;32;2;1;3
+153;Hotel Uroa Bay Beach Resort;4;3;4699;7;Kontynentalny;Tanzania;27;28;2;1;3
+154;Hotel Strand Taba Heights Beach & Golf Resort;5;2;2099;7;Śródziemnomorski;Egipt;21;28;2;1;3
+155;Hotel Jaz Aquamarine Resort;5;2;2749;8;Śródziemnomorski;Egipt;21;28;2;1;3
+156;Hotel Meliá Sierra Nevada;4;1;3219;8;Kontynentalny;Hiszpania;14;32;7;3;3
+157;Hotel Meliá Sol y Nieve;4;1;3119;8;Kontynentalny;Hiszpania;14;32;7;3;3
+158;Hotel Radisson Szklarska Poręba;4;1;400;3;Morski;Polska;1;22;7;3;1
+159;Kinga Hotel Wellness;4;1;429;3;Morski;Polska;1;22;7;3;1
+160;Hotel LD Aqua;2;1;679;4;Kontynentalny;Słowacja;4;27;7;3;1
+161;Hotel Veľká Fatra;4;1;989;4;Kontynentalny;Słowacja;4;27;7;3;1
+162;Hotel Royal Palace;5;1;1739;4;Kontynentalny;Słowacja;4;27;7;3;1
+163;Hotel Splendid;3;1;1529;8;Śródziemnomorski;Włochy;13;27;7;3;3
+164;Hotel Baita Fanti Ski & Bike;3;1;1539;8;Śródziemnomorski;Włochy;13;27;7;3;3
+165;Hotel Daniela;2;1;1509;8;Śródziemnomorski;Włochy;13;27;7;3;3
+166;Hotel Orchidea;3;1;1629;8;Śródziemnomorski;Włochy;13;27;7;3;3
+167;Hotel Liz;3;1;1589;8;Śródziemnomorski;Włochy;13;27;7;3;3
+168;Hotel Excelsior;4;1;1499;6;Śródziemnomorski;Włochy;13;27;7;3;3
+169;Hotel Montanara;3;1;1499;8;Śródziemnomorski;Włochy;13;27;7;3;3
+170;Hotel Corona;3;1;1459;8;Śródziemnomorski;Włochy;13;27;7;3;3
+171;Hotel Sciatori;3;1;1439;8;Śródziemnomorski;Włochy;13;27;7;3;3
+172;Hotel Brunnerhof;3;1;1319;6;Śródziemnomorski;Włochy;13;27;7;3;3
+173;Hotel Dolomiti;3;1;1299;8;Śródziemnomorski;Włochy;13;27;7;3;3
+174;Hotel Stella Alpina;3;1;1079;6;Śródziemnomorski;Włochy;13;27;7;3;3
+175;Hotel Dal Bon;3;1;1009;6;Śródziemnomorski;Włochy;13;27;7;3;3
+176;Hotel Ariston;3;1;949;6;Śródziemnomorski;Włochy;13;27;7;3;3
+177;Hotel Alle Rose;3;1;689;6;Śródziemnomorski;Włochy;13;27;7;3;3
+178;Aparthotel Alpenlandhof;3;1;1039;6;Kontynentalny;Austria;3;26;7;3;1
+179;Apartmenty Haus am Römerbad;3;1;1099;6;Kontynentalny;Austria;3;26;7;3;1
+180;Pensjonat Birkenhof;3;1;1289;8;Kontynentalny;Austria;3;26;7;3;1
+181;Landhotel Postgut;4;1;1309;6;Kontynentalny;Austria;3;26;7;3;1
+182;Hotel Gut Kramerhof;4;1;1309;5;Kontynentalny;Austria;3;26;7;3;1
+183;Hotel Gutshof Zillertal;4;1;1599;6;Kontynentalny;Austria;3;26;7;3;1
+184;Hotel Kielhuberhof;4;1;1769;6;Kontynentalny;Austria;3;26;7;3;1
+185;Hotel Almrausch;4;1;1789;6;Kontynentalny;Austria;3;26;7;3;1
+186;Hotel Sonnalm;4;1;1909;6;Kontynentalny;Austria;3;26;7;3;1
+187;Hotel Austria;6;1;1919;3;Kontynentalny;Austria;3;26;7;3;1
+188;Hotel Der Tirolerhof;4;1;2079;6;Kontynentalny;Austria;3;26;7;3;1
+189;Alpin-hotel Schrofenblick;4;1;2499;8;Kontynentalny;Austria;3;26;7;3;1
+190;Hotel Tauern Spa Zell am See-Kaprun;4;1;3769;6;Kontynentalny;Austria;3;26;7;3;1
+191;Hotel Büntali;4;1;2719;8;Kontynentalny;Austria;3;26;7;3;1
+192;Wellness Hotel Babylon;4;1;559;3;Kontynentalny;Czechy;6;25;7;3;1
+193;Hotel Wellness Svornost;3;1;539;4;Kontynentalny;Czechy;6;25;7;3;1
+194;Pytloun Wellness Hotel Harrachov;4;1;439;4;Kontynentalny;Czechy;6;25;7;3;1
+195;Złocista wyspa i ogród na Atlantyku;3;1;3359;8;Śródziemnomorski;Portugalia;19;24;3;2;3
+196;Hotel Gran Elba Estepona & Thalasso Spa;5;1;3959;8;Kontynentalny;Hiszpania;14;32;2;1;3
+197;Hotel Grand Palladium Palace Ibiza Resort & Spa;5;1;6409;8;Kontynentalny;Hiszpania;14;32;2;1;3
+198;Hotel JW Marriott Khao Lak Resort & Spa;5;7;7689;8;Monsunowy;Tajlandia;14;32;2;1;3
+199;Hotel Riu Funana;5;-1;4949;8;Morski;Wyspy Zielonego Przylądka;24;29;2;1;3
+200;Hotel Botanico & The Oriental Spa Garden;5;1;4659;8;Kontynentalny;Hiszpania;14;32;2;1;3
+201;Hotel Princesa Yaiza Suite Resort;5;1;3899;8;Kontynentalny;Hiszpania;14;32;2;1;3
+202;Hotel Gran Meliá Palacio De Isora;5;1;4049;8;Kontynentalny;Hiszpania;14;32;2;1;3
+203;Hotel Lopesan Baobab Resort;5;1;4029;8;Kontynentalny;Hiszpania;14;32;2;1;3
+204;Hotel Meliá Buenavista;5;-5;6219;8;Kontynentalny;Kuba;30;32;2;1;3
+205;Hotel Kiwengwa Beach Resort;5;3;5509;8;Kontynentalny;Tanzania;27;28;2;1;3
+206;Klasyczne Włochy;3;1;1708;8;Śródziemnomorski;Włochy;13;27;9;2;3
+207;Hotel Impressive Punta Cana;5;-4;5699;8;Pustynny;Dominikana;31;32;2;1;3
+208;Be Live Collection Punta Cana;5;-4;5699;8;Pustynny;Dominikana;31;32;2;1;3
+209;Hotel Be Live Collection Canoa;5;-4;6299;8;Pustynny;Dominikana;31;32;2;1;3
+210;Karaibskie inspiracje;3;-4;7309;8;Pustynny;Dominikana;31;32;3;2;3
+211;Bogowie i faraonowie;3;2;2129;8;Śródziemnomorski;Egipt;21;28;1;2;3
+212;Morze cudów i cuda nad rzeką;3;2;3009;8;Śródziemnomorski;Egipt;21;28;1;2;3
+213;Hotel Hard Rock Ibiza;5;1;7499;8;Kontynentalny;Hiszpania;14;32;2;1;3
+214;Hotel Royal Hideaway Corales Beach;5;1;5839;8;Kontynentalny;Hiszpania;14;32;2;1;3
+215;Hotel Orangea;3;3;5619;8;Kontynentalny;Madagaskar;29;23;2;1;3
+216;Hotel Andilana Beach Resort;5;3;6639;8;Kontynentalny;Madagaskar;29;23;2;1;3
+217;Hotel Royal Beach;4;3;5819;8;Kontynentalny;Madagaskar;29;23;2;1;3
+218;Hotel Sun lsland Resort & Spa;5;5;5699;8;Morski;Malediwy;28;30;2;1;3
+219;Hotel Paradise Island Resort;5;5;7069;8;Morski;Malediwy;28;30;2;1;3
+220;Hotel Sandies Bathala Resort;5;5;7969;8;Morski;Malediwy;28;30;2;1;3
+221;Hotel Diamonds Athuruga Island Resort;5;5;9349;8;Morski;Malediwy;28;30;2;1;3
+222;Hotel Diamonds Thudufushi;5;5;9609;8;Morski;Malediwy;28;30;2;1;3
+223;Koralowe love;3;5;6519;9;Morski;Malediwy;28;30;3;2;3
+224;Z atolu na atol;3;5;6449;9;Morski;Malediwy;28;30;3;2;3
+225;W samo południe;3;-7;6579;10;Górski;Meksyk;32;25;9;2;3
+226;Hotel Mrągowo Resort & Spa;4;1;979;6;Morski;Polska;1;22;3;1;1
+227;Hotel Skalny Spa;3;1;369;3;Morski;Polska;1;22;6;1;1
+228;Aparthotel Blue Marine Mielno;4;1;839;5;Morski;Polska;1;22;3;1;1
+229;Hotel Grand Nosalowy Dwór;4;1;359;3;Morski;Polska;1;22;7;1;1
+230;Strelicje na klifach;3;1;2609;8;Śródziemnomorski;Portugalia;19;24;3;2;3
+231;Hotel Rayavadee;5;7;11269;8;Monsunowy;Tajlandia;33;31;2;1;3
+232;Ahoj Zanzibar!;3;3;6759;8;Kontynentalny;Tanzania;27;28;3;2;3
+233;Hotel Miramare Sea Resort & Spa;4;1;4789;8;Śródziemnomorski;Włochy;13;27;2;1;3
+234;Ateny;3;2;1899;4;Śródziemnomorski;Grecja;15;31;9;2;3
+235;Rejs do Zatoki Przemytników;3;2;2214;10;Śródziemnomorski;Grecja;15;31;3;2;3
+236;Nisyros Special;3;2;2274;11;Śródziemnomorski;Grecja;15;31;3;2;3
+237;Madryt;3;1;2199;4;Kontynentalny;Hiszpania;14;32;9;2;3
+238;W rytmie flamenco;3;1;3199;8;Kontynentalny;Hiszpania;14;32;9;2;3
+239;Gradac;3;1;1237;5;Śródziemnomorski;Chorwacja;12;30;2;2;2
+240;Moja Praga;3;1;848;4;Kontynentalny;Czechy;6;25;9;2;3
+241;Tylko dla Ciebie – Sekrety Faraonów;3;2;2949;8;Śródziemnomorski;Egipt;21;28;1;2;3
+242;Budapeszt i Tokaj;3;1;901;2;Kontynentalny;Węgry;8;28;9;2;2
+243;Rzymskie wakacje;3;1;1198;7;Śródziemnomorski;Włochy;13;27;9;2;3
+244;Saluti Roma;3;1;2113;8;Śródziemnomorski;Włochy;13;27;8;2;3
+245;Wlochy klasyczne;3;1;1679;6;Śródziemnomorski;Włochy;13;27;8;2;2
+246;Toskania My Love;3;1;1609;6;Śródziemnomorski;Włochy;13;27;8;2;2
+247;Włoski Niezbędnik;3;1;1075;2;Śródziemnomorski;Włochy;13;27;8;2;2
+248;Zawsze niech będzie słońce;3;1;2989;8;Kontynentalny;Hiszpania;14;32;3;2;3
+249;Ziemia Obiecana;3;2;2999;8;Pustynny;Izrael;23;32;9;2;3
+250;Świąteczne jarmarki nad Dunajem;3;1;798;3;Kontynentalny;Austria;3;26;9;2;3
+251;Przy dzwiekach walca;3;1;1569;3;Kontynentalny;Austria;3;26;9;2;3
+252;Minsk i polskie Kresy;3;3;1606;4;Kontynentalny;Białoruś;5;22;8;2;3
+253;Hacienda Beach;3;2;1869;5;Kontynentalny;Bułgaria;9;30;7;2;2
+254;Najlepsze z Chorwacji;3;1;3761;12;Śródziemnomorski;Chorwacja;12;30;2;2;3
+255;Na północ od Bangkoku;3;7;6839;16;Monsunowy;Tajlandia;33;31;2;2;3
+256;W Alpejskim stylu;3;1;1671;6;Kontynentalny;Austria;3;26;8;2;2
+257;Praga Express;3;1;700;2;Kontynentalny;Czechy;6;25;9;2;2
+258;Czeskie Impresje;3;1;850;2;Kontynentalny;Czechy;6;25;9;2;2
+259;Potega Poludnia;3;2;1630;4;Śródziemnomorski;Egipt;21;28;1;2;3
+260;Paris, Paris…;3;1;1198;6;Kontynentalny;Francja;11;25;9;2;3
+261;Wycieczka na Lazurowe Wybrzeże;3;1;1198;6;Kontynentalny;Francja;11;25;3;2;3
+262;Wiosna w Prowansji;3;1;1498;6;Kontynentalny;Francja;11;25;9;2;3
+263;Islas Bonitas;3;1;4769;8;Kontynentalny;Hiszpania;14;32;3;2;3
+264;Śródziemnomorska księżniczka;3;1;1999;8;Śródziemnomorski;Malta;20;29;3;2;3
+265;Maltańskie trojaczki;3;1;1999;8;Śródziemnomorski;Malta;20;29;3;2;3
+266;Bożonarodzeniowe Jarmarki;3;1;828;3;Morski;Niemcy;2;23;9;2;3
+267;Sankt Petersburg;3;3;2999;5;Kontynentalny;Rosja;10;21;9;2;3
+268;Rosyjska zima;3;3;4989;7;Kontynentalny;Rosja;10;21;9;2;3
+269;Szlakiem hrabiego Drakuli;3;2;941;2;Kontynentalny;Rumunia;7;27;8;2;2
+270;W orientalny deseń;3;7;5679;14;Monsunowy;Tajlandia;33;31;2;2;3
+271;Bambusowe łodzie Złotego Buddy;3;7;5640;16;Monsunowy;Tajlandia;33;31;2;2;3
+272;Smak Orientu;3;3;1741;4;Kontynentalny;Turcja;16;31;2;2;3
+273;Wyprawa po słońce;3;1;1198;7;Śródziemnomorski;Włochy;13;27;9;2;3
+274;Gorący Neapol;3;1;1598;8;Śródziemnomorski;Włochy;13;27;9;2;3
+275;Wenecja;3;1;1989;4;Śródziemnomorski;Włochy;13;27;9;2;3
+276;Pod sloncem Kampanii;3;1;2121;8;Śródziemnomorski;Włochy;13;27;8;2;3
+277;Spacer po mieście Nesebyr;3;2;2270;13;Kontynentalny;Bułgaria;9;30;7;2;3
+278;Hotel Grand Blue Fafa;5;2;4289;8;Śródziemnomorski;Albania;17;29;3;1;3
+279;Hotel Grand Blue Fafa;5;2;7229;15;Śródziemnomorski;Albania;17;29;3;1;3
+280;Hotel Andon Lapa;4;2;2259;8;Śródziemnomorski;Albania;17;29;3;1;3
+281;Perly Albanii;3;1;2630;9;Śródziemnomorski;Albania;17;29;2;2;3
+282;Hotel Hubertus;3;1;1439;6;Kontynentalny;Austria;3;26;7;3;1
+283;Hotel Kolmhof;4;1;2059;6;Kontynentalny;Austria;3;26;7;3;1
+284;Z widokiem na Czarnobyl;3;3;1862;6;Kontynentalny;Białoruś;5;22;8;2;3
+285;Primorsko Del Sol;4;2;2215;8;Kontynentalny;Bułgaria;9;30;2;1;3
+286;Południowa Bułgaria;3;2;1790;8;Kontynentalny;Bułgaria;9;30;7;2;3
+287;Czeski dwutakt;3;1;898;4;Kontynentalny;Czechy;6;25;9;2;3
+288;Hotel Barceló Castillo Beach Resort;4;1;3199;8;Kontynentalny;Hiszpania;14;32;2;1;3
+289;Hotel R2 Rio Calma;5;1;2499;8;Kontynentalny;Hiszpania;14;32;2;1;3
+290;Hotel Monte Mar Palace;4;1;1649;4;Śródziemnomorski;Portugalia;19;24;2;1;3
+291;Statek Piracki na Wyspę Flamingów;3;1;2299;7;Śródziemnomorski;Tunezja;22;33;3;2;3
+292;Zakupy & Starówka Antalyi;3;3;2565;12;Kontynentalny;Turcja;16;31;3;2;3
+293;Pamukkale i jezioro Salda;3;3;1414;7;Kontynentalny;Turcja;16;31;6;2;3
+294;Club Hotel Solaris;3;1;1559;8;Śródziemnomorski;Włochy;13;27;7;3;3
+295;Hotel Du Lac Vital Mountain;3;1;1009;6;Śródziemnomorski;Włochy;13;27;7;3;3
+296;Hotel Meliá Sunny Beach;5;3;2809;8;Kontynentalny;Bułgaria;9;30;3;1;1
+297;Hotel Meliá Sunny Beach;5;3;4099;11;Kontynentalny;Bułgaria;9;30;3;1;1
+298;Hotel Barceló Royal Beach;5;3;2319;8;Kontynentalny;Bułgaria;9;30;3;3;3
+299;Hotel Evelina Palace;4;3;679;6;Kontynentalny;Bułgaria;9;30;7;3;1
+300;Hotel Astarea 1;3;1;1329;5;Śródziemnomorski;Chorwacja;12;30;2;1;3
+301;Trim Sunny Apartments by Valamar;2;1;1339;4;Śródziemnomorski;Chorwacja;12;30;2;1;3
+302;Hotel Aquapark Szpindlerowy Młyn;3;1;659;4;Kontynentalny;Czechy;6;25;7;3;1
+303;Hotel Malikia Resort Abu Dabbab;5;2;2879;8;Śródziemnomorski;Egipt;21;28;2;3;3
+304;Skarby faraonów;3;2;2109;8;Śródziemnomorski;Egipt;21;28;1;2;3
+305;Bożonarodzeniowa Alzacja;3;1;998;5;Kontynentalny;Francja;11;25;9;2;3
+306;Hotel Club Paloma Family;4;2;2459;8;Kontynentalny;Turcja;16;31;3;1;3
+307;Hotel Gold Island;5;2;2629;6;Kontynentalny;Turcja;16;31;3;1;3
+308;Hotel Gold Island;5;2;3299;9;Kontynentalny;Turcja;16;31;3;1;3

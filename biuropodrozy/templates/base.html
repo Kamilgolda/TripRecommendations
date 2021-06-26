@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+{% load static i18n %}
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}BiuroPodrozy{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="System rekomendacji wycieczek dla Biura Podróży z wykorzystaniem algorytmów Sztucznej Inteligencji">
+    <meta name="author" content="Grupa projektowa 8">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+
+
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <!-- Your stuff: Third-party CSS libraries go here -->
+
+    <!-- This file stores project-specific CSS -->
+
+    <link href="{% static 'css/project.css' %}" rel="stylesheet">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    {% block css %}{% endblock %}
+
+      <!-- Bootstrap JS and its dependencies-->
+      <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+      <script defer src="{% static 'js/project.js' %}"></script>
+
+    {% block javascript %}{% endblock %}
+
+  </head>
+
+  <body>
+       <header class="main-header">
+        <div class="logo">
+            <a href="{% url 'home' %}"><img src="{% static 'images/logo.png'%}"></a>
+        </div>
+
+        <input type="checkbox" class="menu-btn" id="menu-btn">
+        <label for="menu-btn" class="menu-icon">
+            <span class="menu-icon__line"></span>
+        </label>
+
+        <ul class="nav-links">
+            <li class="nav-link">
+                <a href="{% url 'about' %}">O nas</a>
+            </li>
+            <li class="nav-link">
+                <a href="{% url 'travels:popular' %}">Wycieczki</a>
+            </li>
+
+            <li class="nav-link">
+               <a href="{% url 'contact' %}">Kontakt</a>
+            </li>
+
+              {% if request.user.is_authenticated %}
+                <li class="nav-link">
+
+                  <a href="{% url 'users:detail' request.user.username  %}">{% trans "Mój Profil" %}</a>
+                </li>
+
+            <li class="nav-link">
+                {# URL provided by django-allauth/account/urls.py #}
+                <a href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
+            </li>
+            {% else %}
+            <li class="nav-link">
+                {# URL provided by django-allauth/account/urls.py #}
+                <a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+              </li>
+              <li class="nav-link">
+                {# URL provided by django-allauth/account/urls.py #}
+                <a href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
+              </li>
+            {% endif %}
+        </ul>
+    </header>
+
+
+       {% if messages %}
+       {% for message in messages %}
+       <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+          {% endfor %}
+      {% endif %}
+
+    <div class="content">
+
+
+
+      {% block content %}{% endblock content %}
+
+    </div> <!--body-->
+
+    <div class="footerDiv">
+        <footer class="footer">
+            <div class="footer-left">
+
+                <p>
+                    IT Flies powstało w 2000 r. w Rzeszowie i od 2012 roku
+                    jest biurem podróży nr 1 w Polsce. W tym czasie wysłaliśmy
+                    na wakacje niemal 8 milionów Klientów. Od początku towarzyszyła
+                    nam pasja do podróżowania i pokazywania świata innym.
+                    Jako pierwsi odkrywaliśmy kraje, których nigdy wcześniej nie
+                    proponowali polscy touroperatorzy. Otworzyliśmy ponad 170
+                    salonów firmowych. W kilku krajach założyliśmy własne biura
+                    incomingowe, po to by dbać o wysoką jakość obsługi na każdym
+                    etapie Twojej podróży.
+                </p>
+                <br>
+                <div class="socials">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-youtube"></i></a>
+                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                    <a href="#"><i class="fa fa-tumblr"></i></a>
+                </div>
+            </div>
+            <ul class="footer-right">
+                <li>
+                    <h2>Wycieczki</h2>
+                    <ul class="box">
+                        <li><a href="#">Dla rodzin z dziećmi</a></li>
+                        <li><a href="#">Dla par i singli</a></li>
+                        <li><a href="#">Dla niepełnosprawnych</a></li>
+                        <li><a href="#">Dla fanów białego szaleństwa</a></li>
+                        <li><a href="#">Dla miłośników luksusu</a></li>
+                        <li><a href="#">Dla aktywnych</a></li>
+                    </ul>
+                </li>
+                <li class="features">
+                    <h2>Jak rezerwować?</h2>
+                    <ul class="box">
+                        <li><a href="#">Warunki umowy</a></li>
+                        <li><a href="#">Dane osobowe</a></li>
+                        <li><a href="#">Regulamin serwisu</a></li>
+                        <li><a href="#">Rezerwacja krok po kroku</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Linie lotnicze</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h2>Adres</h2>
+                    <ul class="box">
+                        <li>Ulica Tadeusza Rejtana 9</li>
+                        <li>35-900 Rzeszów</li>
+                        <li>Polska</li>
+                    </ul>
+                    <br>
+                    <div class="socials">
+                        <span>
+                            <i class="fa fa-phone"></i>
+                            &nbsp; 123-456-789
+                        </span>
+                        <br>
+                        <span>
+                            <i class="fa fa-envelope"></i>
+                            &nbsp; info@itflies.com
+                        </span>
+                    </div>
+                </li>
+            </ul>
+            <div class="footer-bottom">
+                <p>All Right reserved by &copy;IT Flies 2021</p>
+            </div>
+        </footer>
+    </div> <!--Stopka-->
+
+    {% block modal %}{% endblock modal %}
+
+    {% block inline_javascript %}
+    {# Script tags with only code, no src (defer by default) #}
+    {% endblock inline_javascript %}
+  </body>
+</html>
+

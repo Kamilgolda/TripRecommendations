@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% load static i18n crispy_forms_tags %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/contact.css'%}">
+{% endblock css %}
+
+{% block content %}
+<div class="cont">
+    <div id="frame">
+        <h1> Zadaj pytanie</h1>
+
+        <div class="FormContact">
+            {% crispy form %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

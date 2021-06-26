@@ -1,0 +1,42 @@
+.cont{
+    padding-bottom: 200px;
+    width: 100%;
+}
+#frame{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    background-color: rgba(255, 255, 255,0.7);
+    border-radius: 60px;
+    position: relative;
+    top: 100px;
+    padding: 80px 20px;
+}
+.FormContact{
+    padding-top: 20px;
+    text-align: center;
+}
+.FormContact label{
+    float: left;
+}
+.FormContact input, textarea{
+    height: 40px;
+    width: 100%;
+}
+.FormContact #id_Content{
+    height: 150px;
+}
+.FormContact #id_NameAndLastName,#id_Email{
+    height: 40px;
+}
+.FormContact button{
+    height: 40px;
+    width: 160px;
+    margin: auto;
+    font-size: large;
+}

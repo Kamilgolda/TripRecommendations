@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block title %}{% block head_title %}{% endblock head_title %}{% endblock title %}
+
+{% block css %}
+<link href="{% static 'css/accountbase.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+  <div class="col-md-8 offset-md-2">
+    {% block inner %}{% endblock %}
+  </div>
+
+{% endblock %}

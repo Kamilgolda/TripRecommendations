@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/trip_details.css'%}">
+{% endblock css %}
+
+{% block content %}
+
+  <div class="d-flex justify-content-evenly flex-wrap p-4 m-4 rounded" id="tcontainer">
+    <div class="flex-fill left_side">
+      <h1 class="title">{{ trip.title }}</h1>
+        {% for picture in pictures %}
+        {% if picture.trip == trip %}
+        <img class="rounded" src="{{ picture.picture_url }}">
+        {% endif %}
+        {% endfor %}
+      <hr>
+      <h2>{{ trip.city }}</h2>
+      {% if trip.rating != None %}
+        <h2>Ocena: {{ trip.rating }}/6</h2>
+      {% endif %}
+      {% if trip.hotelstars != None %}
+        <h2>Gwiazdki hotelowe: {{trip.hotelstars}}</h2>
+      {% endif %}
+      <h2>Czas trwania: {{ trip.duration }} dni</h2>
+      <h2 style="text-align:right;"><strong>Cena od <span id="tripPrice">{{ trip.price }} </span> zł/os</strong></h2>
+      <hr>
+      <div class="descriptions">
+        <h6>{{ trip.head_description|linebreaks }}</h6>
+
+        {% if trip.location_description != "" %}
+        <h5>POŁOŻENIE</h5>
+        <h6>{{ trip.location_description|linebreaks }}</h6>
+        {% endif %}
+
+        {% if trip.beach_description != "" %}
+        <h5>PLAŻA</h5>
+        <h6>{{ trip.beach_description|linebreaks }}</h6>
+        {% endif %}
+
+        {% if trip.hotel_description != "" %}
+        <h5>HOTEL</h5>
+        <h6>{{ trip.hotel_description|linebreaks }}</h6>
+        {% endif %}
+
+        {% if trip.room_description != "" %}
+        <h5>POKÓJ</h5>
+        <h6>{{ trip.room_description|linebreaks }}</h6>
+        {% endif %}
+
+        {% if trip.sport_and_entertainment_description != "" %}
+        <h5>SPORT I ROZRYWKA</h5>
+        <h6>{{ trip.sport_and_entertainment_description|linebreaks }}</h6>
+        {% endif %}
+
+        {% if trip.all_inclusive_description != "" %}
+        <h5>ALL INCLUSIVE (ZA DOPŁATĄ)</h5>
+        <h6>{{ trip.all_inclusive_description|linebreaks }}</h6>
+        {% endif %}
+
+        {% if trip.for_free_description != "" %}
+        <h5>GRATIS</h5>
+        <h6>{{ trip.for_free_description|linebreaks }}</h6>
+        {% endif %}
+
+        {% if trip.trip_plan_description != "" %}
+        <h5>PLAN WYCIECZKI</h5>
+        <h6>{{ trip.trip_plan_description|linebreaks }}</h6>
+        {% endif %}
+
+        {% if trip.benefits_description != "" %}
+        <h5>ŚWIADCZENIA</h5>
+        <h6>{{ trip.benefits_description|linebreaks }}</h6>
+        {% endif %}
+        </div>
+    </div>
+    <div class="flex-fill pl-5">
+      {% if trip.countryEN != "" %}
+      <div class="weather">
+        <h2>Pogoda:</h2>
+        <h2>Dziś: {{trip.weather_api.temp_today}} {{trip.weather_api.desc_today}}</h2>
+        <h2>{{trip.weather_api.next1day_name}}: {{trip.weather_api.temp_next1day}}</h2>
+        <h2>{{trip.weather_api.next2day_name}}: {{trip.weather_api.temp_next2day}}</h2>
+        <h2>{{trip.weather_api.next3day_name}}: {{trip.weather_api.temp_next3day}}</h2>
+      </div>
+      {% endif %}
+      <hr>
+      {% if trip.currency != 'PLN' or trip.currency != '' %}
+      {% if trip.exchange_rates_api.rate_in_pln != '' %}
+      <div class="exchanges">
+        <h2>Kurs: 1{{trip.currency}} = {{ trip.exchange_rates_api.rate_in_pln }}zł</h2>
+      </div>
+      {% endif %}
+      {% endif %}
+      <hr>
+      {% if trip.countryEN != "" %}
+      <div class="covid">
+      <h2>Aktualna liczba zachorowań na covid: {{trip.covid_api.today_covid}}</h2>
+      </div>
+      {% endif %}
+      <hr>
+      <div id="reservation">
+        {% if user.is_authenticated %}
+        {% include 'travels/partials/reservation_form.html' %}
+        {% else %}
+        <h2>Aby złożyć rezerwację musisz się zalogować</h2>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+
+{% endblock content %}
+
+{% block inline_javascript %}
+  <script type="text/javascript" src="{% static 'js/reservation.js'%}"></script>
+{% endblock inline_javascript %}

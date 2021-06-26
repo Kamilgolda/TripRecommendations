@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/trips.css'%}">
+{% endblock css %}
+
+{% block content %}
+{% if user.is_authenticated and polling is None %}
+<div class="row">
+  <div class="col-lg-12">
+    <a class="btn btn-primary" href="{% url 'travels:polling' %}">Prosimy o wypełnienie krótkiej
+      ankiety w celu znalezienia najlepszych ofert dla Ciebie</a>
+  </div>
+</div>
+{% endif %}
+
+
+<div class="contOferty">
+    <div id="oferty">
+      <div class="row">
+        <div class="col-lg-4">
+          <a class="btn btn-dark" id="b1" href="{% url 'travels:selected_for_you' %}">Wybrane dla Ciebie</a>
+        </div>
+        <div class="col-lg-4">
+          <a class="btn btn-dark" id="b2" href="{% url 'travels:popular' %}">Popularne</a>
+        </div>
+        <div class="col-lg-4">
+          <a class="btn btn-dark" id="b3" href="{% url 'travels:otherschoose' %}">Inni użytkownicy wybrali</a>
+        </div>
+      </div>
+      {% for trip in trips %}
+        <a href="{% url 'travels:details' slug=trip.slug %}">
+          <div class="boxWycieczki">
+            <div class="imgBx">
+              <img src="
+                {% for picture in pictures %}
+                  {% if picture.trip == trip %}
+                  {{picture.picture_url}}
+                  {% endif %}
+                {% endfor %}
+               " alt="obrazek wycieczki" onerror="this.src='https://i.content4travel.com/cms/img/u/kraj/1/chorwacja_0.jpg?version=13'">
+            </div>
+
+            <span class="szczegoly">Sprawdź szczegóły oferty</span>
+
+            <div class="contentbox">
+                <h2>{{trip.title}}<br>
+                    <span>
+                        {{trip.country}} {{trip.city}}
+                        <br>
+                        {% if trip.rating != None %}
+                        Ocena: {{trip.rating}}/6
+                        <br>
+                        {% endif %}
+                        Czas trwania: {{trip.duration}} dni
+                        <br>
+                        Cena od {{trip.price}} zł/os.
+                    </span>
+                </h2>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+      <div class="pagination">
+        <span class="step-links">
+          {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; pierwsza</a>
+            <a href="?page={{ page_obj.previous_page_number }}">poprzednia</a>
+          {% endif %}
+
+          <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+          </span>
+
+          {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">następna</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">ostatnia &raquo;</a>
+          {% endif %}
+        </span>
+      </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block inline_javascript %}
+  <script type="text/javascript" src="{% static 'js/trips.js'%}"></script>
+{% endblock inline_javascript %}
