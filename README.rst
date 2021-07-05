@@ -1,7 +1,12 @@
-BiuroPodrozy
+.. image:: biuropodrozy/static/images/readmePicture.png
+      :target: https://github.com/adrianboratyn/TripRecommendations
+      :alt: Home Page image
+
+IT Flies
 ============
 
-System rekomendacji wycieczek dla Biura Podróży z wykorzystaniem algorytmów Sztucznej Inteligencji
+IT Flies is a fictional travel agency where you can book a trip to a selected destination. Our project uses AI algorithms (content-based recommendation and collaborative filtering) to create personalized recommendations for individual users.
+The application allows user registration and provides information on the number of COVID-19 infections at the trip location thanks to the API connection, as well as weather data.
 
 .. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter
      :target: https://github.com/pydanny/cookiecutter-django/
