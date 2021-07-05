@@ -1,4 +1,4 @@
-.. image:: https://github.com/adrianboratyn/DjangoProject/blob/main/DjangoProject/home/static/home/img/readmePicture.png
+.. image:: biuropodrozy/static/images/readmePicture.png
       :target: https://github.com/adrianboratyn/TripRecommendations
       :alt: Home Page image
 
